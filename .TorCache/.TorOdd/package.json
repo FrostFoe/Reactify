@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "axios": "^1.7.7",
+    "colors": "^1.4.0",
+    "header-generator": "^2.1.56",
+    "hpack": "^1.0.0",
+    "user-agents": "^1.1.343"
+  }
+}

