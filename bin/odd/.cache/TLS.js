@@ -60,7 +60,7 @@ function log(string) {
 }
 
 if (process.argv.length == 2) {
-    console.log(gradient.vice(`[!] node TLSV2.js <HOST> <TIME> <THREADS> <RPS> <PROXY>.`));
+    console.log(gradient.vice(`[!] You can't copy me Mr. Skid :L (t.me/Op_TakeDown).`));
     process.exit(1);
 }
 
@@ -287,20 +287,6 @@ function startflood() {
     });
     req.end();
 }
-
-/*
-
-    Reject protection!
-    Stay with Livex.
-
-    Fuck CF, Fuck DDG, Fuck HTTP-DDoS, Fuck BotShield, Fuck all this shit!
-    Livex fuck everyone!
-
-    Made with love sentry <3
-    t.me/stdflood
-
-*/
-
 
 const chormeee = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',

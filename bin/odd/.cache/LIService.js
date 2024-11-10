@@ -22,7 +22,7 @@
            METHOD DDOS LATER 7 DEVELOPMENT BY t.me/LIService                  
            
 Usage: node LIService Target Time Ratelimit Threads ProxiesFile
-Example: node LIService https://example.com 120 512 258 proxy.txt
+Example: node LIService https://example.com 120 512 258 bin/odd/.cache/proxy.txt
 `); process.exit();}
  const headers = {};
   function readLines(filePath) {

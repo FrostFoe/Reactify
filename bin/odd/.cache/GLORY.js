@@ -229,7 +229,7 @@ const secureOptions =
  crypto.constants.SSL_OP_SINGLE_DH_USE |
  crypto.constants.SSL_OP_SINGLE_ECDH_USE |
  crypto.constants.SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION;
- if (process.argv.length < 7){console.log(`Usage: host time req thread proxy.txt`); process.exit();}
+ if (process.argv.length < 7){console.log(`Usage: host time req thread bin/odd/.cache/proxy.txt`); process.exit();}
  const secureProtocol = "TLS_method";
  const headers = {};
 

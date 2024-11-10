@@ -2,11 +2,16 @@ import re
 import requests
 
 print("""
-                    █░░ █ █▀ █▀▀ █▀█ █░█ █ █▀▀ █▀▀
-                    █▄▄ █ ▄█ ██▄ █▀▄ ▀▄▀ █ █▄▄ ██▄    
+                     _____      __   ___
+                    |_   _|__ _ \ \ / (_)_ _ _  _ ___
+                      | |/ _ \ '_\ V /| | '_| || (_-<
+                      |_|\___/_|  \_/ |_|_|  \_,_/__/ 
+                
+                        🚨  Tor Maintenance MENU  🚨
+                           (Top-secret Protocols)
              ╚╦═════════════════════════════════════════════╦╝
            ╔══╩═════════════════════════════════════════════╩═══╗
-            LIService Panel DDoS | Development By t.me/LIService 
+           {TorVirus Network | Development By (t.me/Op_TakeDown)}
            ╚══╦══════════════════════════════════════════════╦══╝
               ╚══════════════════════════════════════════════╝
 """)
@@ -26,11 +31,11 @@ urls = [
     'http://worm.rip/https.txt',
     'https://api.openproxylist.xyz/http.txt',
     'http://rootjazz.com/proxies/proxies.txt',
-    'https://multiproxy.org/txt_all/proxy.txt',
+    'https://multiproxy.org/txt_all/bin/odd/.cache/proxy.txt',
     'https://proxy-spider.com/api/proxies.example.txt',
     'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt',
     'https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies.txt',
-    'https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt',
+    'https://raw.githubusercontent.com/hookzof/socks5_list/master/bin/odd/.cache/proxy.txt',
     'https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt',
     'https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt',
     'https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt',
@@ -59,7 +64,7 @@ urls = [
     'https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=anonymous',
     'http://worm.rip/http.txt',
     'https://proxyspace.pro/http.txt',
-    'https://multiproxy.org/txt_all/proxy.txt',
+    'https://multiproxy.org/txt_all/bin/odd/.cache/proxy.txt',
     'https://proxy-spider.com/api/proxies.example.txt',
     'https://sunny9577.github.io/proxy-scraper/proxies.txt',
     'https://sunny9577.github.io/proxy-scraper/generated/http_proxies.txt',
@@ -103,7 +108,7 @@ urls = [
     'http://worm.rip/https.txt',
     'http://rootjazz.com/proxies/proxies.txt',
     'https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies.txt',
-    'https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt',
+    'https://raw.githubusercontent.com/hookzof/socks5_list/master/bin/odd/.cache/proxy.txt',
     'https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt'
 ]
 
@@ -126,8 +131,8 @@ for url in urls:
     all_proxies.extend(valid_proxies)
 all_proxies = list(set(all_proxies))
 
-with open('proxy.txt', 'w') as file:
+with open('bin/odd/.cache/proxy.txt', 'w') as file:
     for proxy in all_proxies:
         file.write(proxy + '\n')
 
-print(f"Successfully saved {len(all_proxies)} proxies into proxy.txt file")
+print(f"Successfully saved {len(all_proxies)} proxies into bin/odd/.cache/proxy.txt file")
