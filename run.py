@@ -105,7 +105,7 @@ def main_loop():
             dis_dash()
             continue
         
-elif command == "LAYER7":
+        elif command == "LAYER7":
     load_ani("✨ Loading Layer 7 Methods ✨", 1.5)
     print('''
 ━━━━━━━━━━━ Layer 7 Methods ━━━━━━━━━━━
@@ -120,7 +120,6 @@ elif command == "LAYER7":
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚠️ Use Responsibly! ⚠️
 ''')
-            ''')
             continue
 
         elif command in ["CLEAR", "CLS"]:
