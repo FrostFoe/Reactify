@@ -1,4 +1,4 @@
-# 🔥 TorVirus v1.1: Release (November 03, 2024)
+# 🔥 TorVirus v1.1: Release (November 11, 2024)
 
 **TorVirus - The Stealth Network Tool by FrostFoe**
 

