@@ -1,0 +1,26 @@
+{
+    "name": "@types/firefox-webext-browser",
+    "version": "120.0.4",
+    "description": "TypeScript definitions for firefox-webext-browser",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/firefox-webext-browser",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Jasmin Bom",
+            "githubUsername": "jsmnbom",
+            "url": "https://github.com/jsmnbom"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/firefox-webext-browser"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "5d63f604ff063af17ea24258836f54191494516803650936ce13c8c768cced8a",
+    "typeScriptVersion": "4.7",
+    "nonNpm": true
+}

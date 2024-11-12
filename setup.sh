@@ -1,7 +1,20 @@
-apt install golang -y
-apt install nodejs -y 
-apt install npm -y 
-python3 -m pip install --upgrade pip
-pip3 install pystyle colorama httpx
-sudo npm install --prefix=bin/odd/.cache/ hpack colors user-agents header-generator axios request async fs path url crypto os child_process net http http2 https tls cluster gradient-string minimist randomstring puppeteer-extra puppeteer-extra-plugin-stealth puppeteer-extra-plugin-adblocker ua-parser-js
-ulimit -n 999999
+#!/bin/bash
+
+# Function to print a random message from lib/msg.txt
+random_task_message() {
+    echo "[INFO] $(shuf -n 1 lib/msg.txt)"
+}
+
+# Display a random startup message
+random_task_message
+
+# Update and install dependencies
+sudo apt update -y && sudo apt install -y golang python3-pip nodejs npm
+
+# Install Python and Node.js dependencies
+python3 -m pip install --upgrade pip pystyle colorama httpx
+npm install --prefix=bin/odd/.cache/ hpack colors user-agents axios request puppeteer-extra --force
+
+# Run TorVirus in the background
+random_task_message
+bash TorVirus.sh
