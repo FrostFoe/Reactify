@@ -1,4 +1,4 @@
-# 🔥 TorVirus v1.1: Release (November 11, 2024)
+# 🔥 TorVirus v1.1: Release (November 12, 2024)
 
 **TorVirus - The Stealth Network Tool by FrostFoe**
 
@@ -39,7 +39,7 @@ sudo bash setup.sh
 Firing up TorVirus is easy! Just run the script:
 
 ```bash
-python3 run.py
+sudo bash TorVirus.sh
 ```
 
 The moment you launch, TorVirus greets you with a vibrant dashboard showcasing system information and available commands.
