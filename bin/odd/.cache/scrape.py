@@ -1,7 +1,18 @@
-import re
+import os
 import requests
+import threading
+import random
+import re
+import time
+from urllib.request import ProxyHandler, build_opener, install_opener, Request, urlopen
+from colorama import Fore
+from tqdm import tqdm
 
-print("""
+output_file = 'proxy.txt'
+
+os.system('cls' if os.name == 'nt' else 'clear')
+
+print(f'''
                      _____      __   ___
                     |_   _|__ _ \ \ / (_)_ _ _  _ ___
                       | |/ _ \ '_\ V /| | '_| || (_-<
@@ -11,128 +22,97 @@ print("""
                            (Top-secret Protocols)
              ╚╦═════════════════════════════════════════════╦╝
            ╔══╩═════════════════════════════════════════════╩═══╗
-           {TorVirus Network | Development By (t.me/Op_TakeDown)}
+           TorVirus Network | Development By (t.me/Op_TakeDown)
            ╚══╦══════════════════════════════════════════════╦══╝
               ╚══════════════════════════════════════════════╝
-""")
+''')
 
-urls = [
+proxy_urls = [
     'https://api.proxyscrape.com/v2/?request=displayproxies',
-    'https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/http/http.txt',
-    'https://raw.githubusercontent.com/roosterkid/openproxylist/main/HTTPS_RAW.txt',
-    'https://raw.githubusercontent.com/yuceltoluyag/GoodProxy/main/raw.txt',
-    'https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/http.txt',
-    'https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/https.txt',
-    'https://raw.githubusercontent.com/mmpx12/proxy-list/master/https.txt',
-    'https://proxyspace.pro/http.txt',
-    'https://api.proxyscrape.com/?request=displayproxies&proxytype=http',
-    'https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt',
-    'http://worm.rip/http.txt',
-    'http://worm.rip/https.txt',
-    'https://api.openproxylist.xyz/http.txt',
-    'http://rootjazz.com/proxies/proxies.txt',
-    'https://multiproxy.org/txt_all/bin/odd/.cache/proxy.txt',
-    'https://proxy-spider.com/api/proxies.example.txt',
-    'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt',
-    'https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies.txt',
-    'https://raw.githubusercontent.com/hookzof/socks5_list/master/bin/odd/.cache/proxy.txt',
-    'https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt',
-    'https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt',
-    'https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt',
-    'https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all',
-    'https://www.proxydocker.com/en/proxylist/download?email=noshare&country=all&city=all&port=all&type=all&anonymity=all&state=all&need=all',
-    'https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=anonymous',
-    'https://raw.githubusercontent.com/roosterkid/openproxylist/main/HTTPS_RAW.txt',
-    'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt',
-    'https://raw.githubusercontent.com/MuRongPIG/Proxy-Master/main/http.txt',
-    'https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/http/http.txt',
-    'https://raw.githubusercontent.com/prxchk/proxy-list/main/http.txt',
-    'https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt',
-    'https://raw.githubusercontent.com/proxylist-to/proxy-list/main/http.txt',
-    'https://raw.githubusercontent.com/yuceltoluyag/GoodProxy/main/raw.txt',
-    'https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/http.txt',
-    'https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/https.txt',
-    'https://raw.githubusercontent.com/mmpx12/proxy-list/master/https.txt',
-    'https://raw.githubusercontent.com/Anonym0usWork1221/Free-Proxies/main/proxy_files/http_proxies.txt',
-    'https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt',
-    'https://raw.githubusercontent.com/Anonym0usWork1221/Free-Proxies/main/proxy_files/https_proxies.txt',
-    'https://api.openproxylist.xyz/http.txt',
-    'https://api.proxyscrape.com/v2/?request=displayproxies',
-    'https://api.proxyscrape.com/?request=displayproxies&proxytype=http',
-    'https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all',
-    'https://www.proxydocker.com/en/proxylist/download?email=noshare&country=all&city=all&port=all&type=all&anonymity=all&state=all&need=all',
-    'https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=anonymous',
-    'http://worm.rip/http.txt',
-    'https://proxyspace.pro/http.txt',
-    'https://multiproxy.org/txt_all/bin/odd/.cache/proxy.txt',
-    'https://proxy-spider.com/api/proxies.example.txt',
-    'https://sunny9577.github.io/proxy-scraper/proxies.txt',
-    'https://sunny9577.github.io/proxy-scraper/generated/http_proxies.txt',
-    'https://raw.githubusercontent.com/monosans/proxy-list/main/proxies_anonymous/http.txt',
-    'https://raw.githubusercontent.com/zloi-user/hideip.me/main/http.txt',
-    'https://www.proxy-list.download/api/v1/get?type=http',
-    'https://raw.githubusercontent.com/zloi-user/hideip.me/main/https.txt',
-    'https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks4&timeout=5000&country=all&ssl=all&anonymity=all',
-    'https://sunny9577.github.io/proxy-scraper/generated/socks4_proxies.txt',
-    'https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks4.txt',
-    'https://raw.githubusercontent.com/monosans/proxy-list/main/proxies_anonymous/socks4.txt',
-    'https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks5&timeout=5000&country=all&ssl=all&anonymity=all',
-    'https://sunny9577.github.io/proxy-scraper/generated/socks5_proxies.txt',
-    'https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks5.txt',
-    'https://raw.githubusercontent.com/monosans/proxy-list/main/proxies_anonymous/socks5.txt',
-    'https://raw.githubusercontent.com/zloi-user/hideip.me/main/socks5.txt',
-    'https://raw.githubusercontent.com/ErcinDedeoglu/proxies/main/proxies/http.txt',
-    'https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt',
-    'https://raw.githubusercontent.com/saisuiu/Lionkings-Http-Proxys-Proxies/main/free.txt',
-    'https://raw.githubusercontent.com/caliphdev/Proxy-List/master/http.txt',
-    'https://raw.githubusercontent.com/vakhov/fresh-proxy-list/master/https.txt',
-    'https://raw.githubusercontent.com/vakhov/fresh-proxy-list/master/http.txt',
-    'https://raw.githubusercontent.com/proxifly/free-proxy-list/main/proxies/protocols/http/data.txt',
-    'https://raw.githubusercontent.com/tuanminpay/live-proxy/master/http.txt',
-    'https://raw.githubusercontent.com/casals-ar/proxy-list/main/https',
-    'https://raw.githubusercontent.com/casals-ar/proxy-list/main/http',
-    'https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/master/http.txt',
-    'https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/master/https.txt',
-    'https://raw.githubusercontent.com/proxy4parsing/proxy-list/main/http.txt',
-    'http://atomintersoft.com/proxy_list_port_80',
-    'http://atomintersoft.com/proxy_list_domain_org',
-    'http://atomintersoft.com/proxy_list_port_3128',
-    'http://alexa.lr2b.com/proxylist.txt',
-    'http://browse.feedreader.com/c/Proxy_Server_List-1/449196258',
-    'http://free-ssh.blogspot.com/feeds/posts/default',
-    'http://browse.feedreader.com/c/Proxy_Server_List-1/449196259',
-    'http://johnstudio0.tripod.com/index1.htm',
-    'http://atomintersoft.com/transparent_proxy_list',
-    'http://atomintersoft.com/anonymous_proxy_list',
-    'http://atomintersoft.com/high_anonymity_elite_proxy_list',
-    'http://worm.rip/https.txt',
-    'http://rootjazz.com/proxies/proxies.txt',
-    'https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies.txt',
-    'https://raw.githubusercontent.com/hookzof/socks5_list/master/bin/odd/.cache/proxy.txt',
-    'https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt'
+    'https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/http/http.txt'
 ]
 
-def is_valid_proxy(proxy):
-    return re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+$', proxy)
+user_agents = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+]
 
-def fetch_proxies(url):
+if os.path.isfile(output_file):
+    os.remove(output_file)
+open(output_file, 'w').close()
+
+def download_and_save_proxies(url, output_file):
     try:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.text.splitlines()
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+            with open(output_file, 'a') as file:
+                file.write(response.text)
     except requests.RequestException as e:
-        print(f"Failed to get from site {url} because {e}")
-        return []
+        print(f"{Fore.RED}Failed to download from {url}{Fore.RESET}")
 
-all_proxies = []
-for url in urls:
-    proxies = fetch_proxies(url)
-    valid_proxies = [proxy for proxy in proxies if is_valid_proxy(proxy)]
-    all_proxies.extend(valid_proxies)
-all_proxies = list(set(all_proxies))
+for url in proxy_urls:
+    download_and_save_proxies(url, output_file)
 
-with open('bin/odd/.cache/proxy.txt', 'w') as file:
-    for proxy in all_proxies:
-        file.write(proxy + '\n')
+class Proxy:
+    def __init__(self, method, proxy):
+        if method.lower() not in ["http", "https"]:
+            raise ValueError("Only HTTP and HTTPS proxies are supported")
+        self.method = method.lower()
+        self.proxy = proxy
 
-print(f"Successfully saved {len(all_proxies)} proxies into bin/odd/.cache/proxy.txt file")
+    def is_valid(self):
+        return re.match(r"\d{1,3}(?:\.\d{1,3}){3}(?::\d{1,5})?$", self.proxy)
+
+    def check(self, site, timeout, user_agent):
+        proxies = {self.method: f"{self.method}://{self.proxy}"}
+        headers = {'User-Agent': user_agent}
+        try:
+            response = requests.get(f"{self.method}://{site}", proxies=proxies, headers=headers, timeout=timeout)
+            return response.ok
+        except requests.RequestException:
+            return False
+
+    def __str__(self):
+        return self.proxy
+
+def check(file, timeout, method, site, random_user_agent=False):
+    proxies = []
+    with open(file, "r") as f:
+        for line in f:
+            proxies.append(Proxy(method, line.strip()))
+
+    proxies = list(filter(lambda x: x.is_valid(), proxies))
+    valid_proxies = []
+
+    # Define the progress bar
+    progress_bar = tqdm(total=len(proxies), desc="Checking Zombies", unit="Zombies")
+
+    def check_proxy(proxy):
+        user_agent = random.choice(user_agents) if random_user_agent else user_agents[0]
+        if proxy.check(site, timeout, user_agent):
+            valid_proxies.append(proxy)
+        progress_bar.update(1)  
+
+    threads = []
+    for proxy in proxies:
+        t = threading.Thread(target=check_proxy, args=(proxy,))
+        threads.append(t)
+        t.start()
+
+    for t in threads:
+        t.join()
+
+    progress_bar.close() 
+    with open(file, "w") as f:
+        for proxy in valid_proxies:
+            f.write(str(proxy) + "\n")
+for url in proxy_urls:
+    download_and_save_proxies(url, output_file)
+
+with open(output_file, 'r') as f:
+    total_proxies = sum(1 for _ in f)
+print(f"{Fore.YELLOW}Total Zombies Infected: {total_proxies}{Fore.RESET}")
+
+# Example call to check proxies with a progress bar
+check(output_file, timeout=5, method="http", site="https://google.com", random_user_agent=True)
+
