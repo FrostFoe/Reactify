@@ -49,8 +49,8 @@ def mat_eff(duration=3):
 
 
 def wlc_msg(bot_cnt, session_time):
-    title = "🚨 WELCOME TO TORVIRUS 🚨"
-    info = f"| 🔐 Zombies: {bot_cnt} | Session: {session_time:.2f}s | 🌐 Tor✅"
+    title = "           🚨 WELCOME TO TORVIRUS 🚨"
+    info = f"| 🔐 Zombies: {bot_cnt} | Session: {session_time:.2f}s | Tor ✅|"
     clr_csl()
     mat_eff(2)
     clr_csl()
@@ -98,7 +98,7 @@ def ani_txt(text, delay=0.05, end_line=True):
 
 def ran_txt():
     msg_file_path = "lib/msg.txt"
-    if os.path.isfile(msg_file_path):
+    if o.path.isfile(msg_file_path):
         with open(msg_file_path, "r") as file:
             msg = [line.strip() for line in file if line.strip()]
     else:
