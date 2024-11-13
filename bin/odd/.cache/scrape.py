@@ -8,11 +8,12 @@ from urllib.request import ProxyHandler, build_opener, install_opener, Request, 
 from colorama import Fore
 from tqdm import tqdm
 
-output_file = 'proxy.txt'
+output_file = "proxy.txt"
 
-os.system('cls' if os.name == 'nt' else 'clear')
+os.system("cls" if os.name == "nt" else "clear")
 
-print(f'''
+print(
+    f"""
                      _____      __   ___
                     |_   _|__ _ \ \ / (_)_ _ _  _ ___
                       | |/ _ \ '_\ V /| | '_| || (_-<
@@ -25,11 +26,12 @@ print(f'''
            TorVirus Network | Development By (t.me/Op_TakeDown)
            ╚══╦══════════════════════════════════════════════╦══╝
               ╚══════════════════════════════════════════════╝
-''')
+"""
+)
 
 proxy_urls = [
-    'https://api.proxyscrape.com/v2/?request=displayproxies',
-    'https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/http/http.txt'
+    "https://api.proxyscrape.com/v2/?request=displayproxies",
+    "https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/http/http.txt",
 ]
 
 user_agents = [
@@ -39,19 +41,22 @@ user_agents = [
 
 if os.path.isfile(output_file):
     os.remove(output_file)
-open(output_file, 'w').close()
+open(output_file, "w").close()
+
 
 def download_and_save_proxies(url, output_file):
     try:
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
-            with open(output_file, 'a') as file:
+            with open(output_file, "a") as file:
                 file.write(response.text)
     except requests.RequestException as e:
         print(f"{Fore.RED}Failed to download from {url}{Fore.RESET}")
 
+
 for url in proxy_urls:
     download_and_save_proxies(url, output_file)
+
 
 class Proxy:
     def __init__(self, method, proxy):
@@ -65,15 +70,21 @@ class Proxy:
 
     def check(self, site, timeout, user_agent):
         proxies = {self.method: f"{self.method}://{self.proxy}"}
-        headers = {'User-Agent': user_agent}
+        headers = {"User-Agent": user_agent}
         try:
-            response = requests.get(f"{self.method}://{site}", proxies=proxies, headers=headers, timeout=timeout)
+            response = requests.get(
+                f"{self.method}://{site}",
+                proxies=proxies,
+                headers=headers,
+                timeout=timeout,
+            )
             return response.ok
         except requests.RequestException:
             return False
 
     def __str__(self):
         return self.proxy
+
 
 def check(file, timeout, method, site, random_user_agent=False):
     proxies = []
@@ -91,7 +102,7 @@ def check(file, timeout, method, site, random_user_agent=False):
         user_agent = random.choice(user_agents) if random_user_agent else user_agents[0]
         if proxy.check(site, timeout, user_agent):
             valid_proxies.append(proxy)
-        progress_bar.update(1)  
+        progress_bar.update(1)
 
     threads = []
     for proxy in proxies:
@@ -102,17 +113,24 @@ def check(file, timeout, method, site, random_user_agent=False):
     for t in threads:
         t.join()
 
-    progress_bar.close() 
+    progress_bar.close()
     with open(file, "w") as f:
         for proxy in valid_proxies:
             f.write(str(proxy) + "\n")
+
+
 for url in proxy_urls:
     download_and_save_proxies(url, output_file)
 
-with open(output_file, 'r') as f:
+with open(output_file, "r") as f:
     total_proxies = sum(1 for _ in f)
 print(f"{Fore.YELLOW}Total Zombies Infected: {total_proxies}{Fore.RESET}")
 
 # Example call to check proxies with a progress bar
-check(output_file, timeout=5, method="http", site="https://google.com", random_user_agent=True)
-
+check(
+    output_file,
+    timeout=5,
+    method="http",
+    site="https://google.com",
+    random_user_agent=True,
+)
