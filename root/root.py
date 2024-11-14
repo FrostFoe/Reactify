@@ -332,14 +332,12 @@ def main_loop():
                 print("Example: TOR https://example.com 60")
 
         elif command == "PROXY":
-            o.system("python3 bin/odd/.cache/proxy.py &")
+            o.system("python3 bin/odd/.cache/scrape.py &")
             continue
 
         elif command == "UPDATE":
-            o.system(
-                "git clone https://github.com/FrostFoe/TorVirus.git --depth 1 --force && cp -r TorVirus/* . && rm -rf TorVirus"
-            )
-            continue
+          o.system("git reset --hard HEAD && git pull origin main")
+          continue
 
         elif command == "SETUP":
             o.system("sudo bash setup.sh &")
