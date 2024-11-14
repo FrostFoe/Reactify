@@ -9,10 +9,8 @@ def progress(current, total, bar_len=30):
     bar = "█" * fil_len + "-" * (bar_len - fil_len)
     return f"[{bar}] {current}/{total}"
 
-
 def clr_csl():
     o.system("cls" if o.name == "nt" else "clear")
-
 
 def load_prxs(file_path="bin/odd/.cache/proxy.txt"):
     try:
@@ -24,7 +22,6 @@ def load_prxs(file_path="bin/odd/.cache/proxy.txt"):
     except FileNotFoundError:
         print(f"⚠️  Error: {file_path} not found. Proxy connection aborted.")
         s.exit(1)
-
 
 def dis_dash():
     uptime_seconds = int(t.time() - ses_srt)
@@ -40,13 +37,11 @@ def dis_dash():
     """
     )
 
-
 def mat_eff(duration=3):
     start = t.time()
     while t.time() - start < duration:
         print("".join(r.choice("01 ") for _ in range(80)))
         t.sleep(0.1)
-
 
 def wlc_msg(bot_cnt, session_time):
     title = "           🚨 WELCOME TO TORVIRUS 🚨"
@@ -55,7 +50,6 @@ def wlc_msg(bot_cnt, session_time):
     mat_eff(2)
     clr_csl()
     print(f"{title}\n{info}\n")
-
 
 def dis_menu():
     clr_csl()
@@ -75,7 +69,6 @@ def dis_menu():
 """
     )
 
-
 def load_ani(task, duration=1.5):
     frames = ["◐", "◓", "◑", "◒"]
     start = t.time()
@@ -86,7 +79,6 @@ def load_ani(task, duration=1.5):
         index += 1
     print("\r", end="")
 
-
 def ani_txt(text, delay=0.05, end_line=True):
     for char in text:
         s.stdout.write(char)
@@ -94,7 +86,6 @@ def ani_txt(text, delay=0.05, end_line=True):
         t.sleep(delay)
     if end_line:
         print()
-
 
 def ran_txt():
     msg_file_path = "lib/msg.txt"
@@ -107,10 +98,8 @@ def ran_txt():
     load_ani("Processing", 1.5)
     ani_txt(slt_txt)
 
-
 def ses_dur():
     return t.time() - ses_srt
-
 
 def main_loop():
     dis_menu()
@@ -133,7 +122,8 @@ def main_loop():
                      FLOOD: FLOOD https://example.com 60
                      HTTPX: HTTPX https://example.com 60
                      HTTPS: HTTPS https://example.com 60
-                     RESET: RESET https://example.com 60"""
+                     RESET: RESET https://example.com 60
+                     NOX  : NOX https://example.com 60"""
             )
             continue
 
