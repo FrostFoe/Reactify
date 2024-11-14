@@ -57,7 +57,7 @@ sudo bash setup.sh
 Launching **TorVirus** is as simple as running:
 
 ```bash
-bash Tor
+bash virus
 ```
 
 Once you fire it up, **TorVirus** greets you with a **vibrant dashboard**, giving you quick access to all system stats and available commands.
