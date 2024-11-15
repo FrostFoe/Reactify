@@ -118,7 +118,8 @@ def main_loop():
         elif command == "LAYER7":
             load_ani("✨ Loading Layer 7 Methods ✨", 1.5)
             print(
-                """TOR: TOR https://example.com 60
+                """
+                     TOR  : TOR https://example.com 60
                      FLOOD: FLOOD https://example.com 60
                      HTTPX: HTTPX https://example.com 60
                      HTTPS: HTTPS https://example.com 60

@@ -588,4 +588,4 @@ client.on("error", error => {
 		return
 	});
 	connection.end();
-}//
+}

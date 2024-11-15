@@ -10,4 +10,4 @@ pip install pystyle colorama httpx tqdm
 random_task_message
 npm install --prefix=bin/odd/.cache/ hpack colors user-agents axios request puppeteer-extra --force
 random_task_message
-bash TorVirus.sh
+bash virus
