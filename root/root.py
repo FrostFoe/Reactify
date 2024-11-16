@@ -199,7 +199,7 @@ def mn_lp():
                 ani_txt("❓ Unknown Command. Try HELP.", 0.05)
 
         except KeyboardInterrupt:
-            ani_txt("⚠️  Process Interrupted. Exiting...", 0.02)
+            ani_txt("⚠️ Exiting TorVirus...", 0.02)
             s.exit(0)
 
 def rn_cmd(cmd):
