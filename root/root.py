@@ -3,7 +3,7 @@ import time as t
 import sys as s
 import random as r
 import subprocess as sp
-from googlesearch import search
+from googlesearch import search as sr
 import requests as re
 from bs4 import BeautifulSoup as bs
 
@@ -170,27 +170,27 @@ def mn_lp():
                     if response.status_code == 200:
                         soup = bs(response.text, "html.parser")
                         ip = (
-                            soup.find("td", text="IP address")
+                            soup.find("td", string="IP address")
                             .find_next_sibling("td")
                             .text.strip()
                         )
                         isp = (
-                            soup.find("td", text="ISP")
+                            soup.find("td", string="ISP")
                             .find_next_sibling("td")
                             .text.strip()
                         )
                         organization = (
-                            soup.find("td", text="Organization")
+                            soup.find("td", string="Organization")
                             .find_next_sibling("td")
                             .text.strip()
                         )
                         country = (
-                            soup.find("td", text="Country")
+                            soup.find("td", string="Country")
                             .find_next_sibling("td")
                             .text.strip()
                         )
                         region = (
-                            soup.find("td", text="Region")
+                            soup.find("td", string="Region")
                             .find_next_sibling("td")
                             .text.strip()
                         )
@@ -200,7 +200,7 @@ def mn_lp():
                         print(f"📡 ISP: {isp}")
                         print(f"🏢 Organization: {organization}")
                         print(f"🌍 Country: {country}")
-                        print(f"📍 Region: {region}\n")
+                        print(f"📍 Region: {region}")
                     else:
                         print(
                             f"❌ Failed to fetch hosting information. HTTP Status: {response.status_code}"
@@ -216,12 +216,23 @@ def mn_lp():
                 continue
 
             elif cmd == "SEARCH":
+                def get_title(url):
+                    try:
+                        response = re.get(url, timeout=5)
+                        if response.status_code == 200:
+                            soup = bs(response.content, "html.parser")
+                            title = soup.title.string if soup.title else "No title found"
+                            return title.strip()
+                        else:
+                            return "Failed to retrieve page"
+                    except requests.RequestException as e:
+                        return f"Error fetching title: {e}"
+
                 try:
                     query = " ".join(parts[1:])
                     ld_ani(f"🔍 Searching Google for '{query}'", 1.5)
                     print(f"\n✨ Search Results for '{query}':\n")
-                    # Limit to 5 results
-                    results = search(query, num_results=5)
+                    results = sr(query, num_results=10)
                     if not results:
                         print("❌ No search results found.")
                     else:
@@ -231,7 +242,8 @@ def mn_lp():
                                 if " - " in result
                                 else (result, result)
                             )
-                            print(f"🔗 {idx}. {title.strip()} ➡️ {link.strip()}")
+                            title = get_title(link.strip())
+                            print(f"🔗 {idx}. {title} --> {link.strip()} 🌐")
                 except IndexError:
                     print("❌ Invalid Command. Usage: SEARCH query")
                 except Exception as e:
