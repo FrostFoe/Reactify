@@ -116,6 +116,13 @@ def ses_dr():
     return t.time() - ses_srt
 
 
+def rn_cmd(command):
+    try:
+        sp.run(command, shell=True, check=True)
+    except sp.CalledProcessError as e:
+        print(f"❌ Command failed: {e}")
+
+
 def mn_lp():
     ds_mn()
     while True:
@@ -261,6 +268,16 @@ def mn_lp():
                     print("❌ Invalid Command. Usage: SEARCH <QUERY>")
                 except Exception as e:
                     print(f"❌ An error occurred: {e}")
+                continue
+
+            elif cmd == "PROXY":
+                rn_cmd("python3 bin/odd/.cache/scrape.py &")
+                continue
+            elif cmd == "UPDATE":
+                rn_cmd("git reset --hard HEAD && git pull origin main")
+                continue
+            elif cmd == "SETUP":
+                rn_cmd("sudo bash setup.sh &")
                 continue
 
             elif cmd == "HELP":
