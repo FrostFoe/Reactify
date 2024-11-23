@@ -1,1 +1,2 @@
-bin/odd/.cache/node_modules
+/node_modules
+/TorNetwork

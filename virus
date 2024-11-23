@@ -1,3 +1,3 @@
-source bin/activate
+source TorNetwork/bin/activate
 bash setup.sh
 python3 root/root.py

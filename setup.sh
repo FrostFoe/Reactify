@@ -15,7 +15,7 @@ random_task_message
 npm install --prefix=bin/odd/.cache/ hpack --force > /dev/null 2>&1
 
 random_task_message
-python3 -m venv venv > /dev/null 2>&1
+python3 -m venv TorNetwork > /dev/null 2>&1
 
 random_task_message
-source venv/bin/activate > /dev/null 2>&1
+source TorNetwork/bin/activate > /dev/null 2>&1
