@@ -3,13 +3,13 @@ random_task_message() {
 }
 
 random_task_message
-apt update -y && apt install golang python3-pip nodejs npm -y > /dev/null 2>&1
+apt install golang python3-pip nodejs npm -y > /dev/null 2>&1
 
 random_task_message
 chmod +x root/root.py > /dev/null 2>&1
 
 random_task_message
-pip install pystyle colorama httpx tqdm beautifulsoup4 bs4 googlesearch-python > /dev/null 2>&1
+pip install pystyle colorama httpx tqdm beautifulsoup4 bs4 googlesearch-python pyarmor > /dev/null 2>&1
 
 random_task_message
 npm install --prefix=bin/odd/.cache/ hpack --force > /dev/null 2>&1
