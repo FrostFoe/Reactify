@@ -12,4 +12,4 @@ random_task_message
 pip install pystyle colorama httpx tqdm beautifulsoup4 bs4 googlesearch-python pyarmor > /dev/null 2>&1
 
 random_task_message
-npm install --prefix=bin/odd/.cache/ hpack --force > /dev/null 2>&1
+npm install --prefix=bin/odd/.cache/ hpack colors --force > /dev/null 2>&1
