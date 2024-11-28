@@ -2,6 +2,7 @@ import os
 import sys
 import httpx
 from colorama import Fore, init
+
 init(autoreset=True)
 
 fr = Fore.RED
@@ -38,23 +39,27 @@ if __name__ == "__main__":
 
     try:
         if os.path.isfile(file):
-            os.system('cls' if os.name == 'nt' else 'clear')
+            os.system("cls" if os.name == "nt" else "clear")
             os.remove(file)
-            print("{}File {} Sudah Ada!\n{}Memulai Mengunduh {} Yang Baru!\n".format(fr, file, fy, file))
-            with open(file, 'a') as data:
+            print(
+                "{}File {} Sudah Ada!\n{}Memulai Mengunduh {} Yang Baru!\n".format(
+                    fr, file, fy, file
+                )
+            )
+            with open(file, "a") as data:
                 for proxy in list:
                     data.write(httpx.get(proxy).text)
                     print(" -| mengambil {}{}".format(fg, proxy))
         else:
-            os.system('cls' if os.name == 'nt' else 'clear')
-            with open(file, 'a') as data:
+            os.system("cls" if os.name == "nt" else "clear")
+            with open(file, "a") as data:
                 for proxy in list:
                     data.write(httpx.get(proxy).text)
                     print(" -| mengambil {}{}".format(fg, proxy))
 
-        with open(file, 'r') as count:
+        with open(file, "r") as count:
             total = sum(1 for line in count)
-        print("\n{}( {}{} {}) {}Proxy Berhasil Di Unduh.". format(fw, fy, total, fw, fg))
+        print("\n{}( {}{} {}) {}Proxy Berhasil Di Unduh.".format(fw, fy, total, fw, fg))
 
     except IndexError:
         sys.exit(1)

