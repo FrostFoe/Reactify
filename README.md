@@ -69,8 +69,9 @@ root@torvirus#~
 |----------------|----------------------------------------------|-------------------------------------|
 | `TOR`          | Execute a TOR-based attack                   | `TOR https://example.com 60`       |
 | `BYPASS`       | Launch a BYPASSing attack                    | `BYPASS https://example.com 60`    |
-| `CRASH`        | Start an CRASH-based attack                  | `CRASH https://example.com 60`     |
-| `VORTEX`       | Initiate an VORTEX attack                    | `VORTEX https://example.com 60`    |
+| `CRASH`        | Start a CRASH-based attack                   | `CRASH https://example.com 60`     |
+| `VORTEX`       | Initiate a VORTEX attack                     | `VORTEX https://example.com 60`    |
+| `RESET `       | Start a RESET attack                         | `RESET https://example.com 60`     |
 | `SEARCH`       | SEARCH GOOGLE for targets                    | `SEARCH Israeli Bank`              |
 | `HOST`         | Check the HOST of targets                    | `HOST https://example.com`         |
 | `STATS`        | View system and network statistics           | `STATS`                            |

