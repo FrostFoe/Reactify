@@ -1,129 +1,180 @@
-# 🔥 **TorVirus v1.1: Release (November 26, 2024)**
+# 🔥 **TorVirus v1.1: The Stealth Network Tool by FrostFoe**
 
-### **TorVirus - The Stealth Network Tool by FrostFoe**
+### **TorVirus - The Ultimate Network Weapon**
 
----
+Welcome to **TorVirus**, the all-in-one command-line tool for **advanced network operations** and **cyber exploration**. Designed with precision and style, **TorVirus** offers powerful attack methods, real-time monitoring, and a futuristic interface tailored for cybersecurity professionals. 
 
-Welcome to **TorVirus**, the **ultimate command-line powerhouse** for advanced network management and attack execution. Built for the bold and the skilled, **TorVirus** combines cutting-edge capabilities with an intuitive, immersive interface to bring you **real-time monitoring**, diverse **DDoS attack methods**, and **dynamic stats**—all within an easy-to-navigate and highly **aesthetic UI**.
-
-> **Prepare for action!** 🔥 Let’s dive in!
+> **Unleash the power. Operate responsibly.** 🔥
 
 ---
 
-## 🌟 **Features That Pack a Punch**  
+## 🌟 **Key Features**
 
-- **🛰️ Real-Time Network Stats:**  
-  Stay in the loop with **live updates** on bot activity, uptime, network strength, success rates, and threat levels. The **knowledge is yours**—*use it wisely*!
+- **🛰️ Real-Time Network Insights**  
+  Stay updated with live stats on bot activity, request rates, and network health.
 
-- **⚔️ Layer 7 Attack Execution:**  
-  Unleash your creativity with an arsenal of **custom DDoS attack methods** (e.g., TOR, FLOOD, HTTPX, HTTPS, RESET) designed to **challenge** and **conquer** your targets.
+- **⚔️ Layer 7 DDoS Techniques**  
+  Deploy advanced attack methods such as **TOR**, **FLOOD**, **HTTPX**, **HTTPS**, and **RESET** for maximum precision.
 
-- **🌐 Proxy Mastery:**  
-  Seamlessly load and manage **proxies** from files to enhance your network operations. The world is your **playground**.
+- **🌐 Seamless Proxy Management**  
+  Easily manage and load proxy lists to enhance operations.
 
-- **🚀 Matrix-Style Animations:**  
-  Elevate your command-line experience with **stunning matrix-style effects**. Watch as each command takes flight with a smooth, dynamic animation.
+- **🔒 TOR Encryption**  
+  Ensure complete anonymity using **TOR tunnels** with industry-leading encryption.
 
-- **🔒 Encrypted TOR Network Tunnels:**  
-  Your **privacy** is a top priority! Use **encrypted connections** to proxies via the TOR network for that extra layer of **anonymity**.
+- **🚀 Immersive Visual Interface**  
+  Enjoy a matrix-inspired design with fluid animations and a user-friendly experience.
 
-- **🖥️ System Dashboard:**  
-  A **real-time, all-in-one view** of your system’s performance—check your **bot activity**, uptime, and strength in a glance.
-
-- **⚠️ Advanced Threat Analysis:**  
-  **Monitor threat levels** with detailed **indicators**—low, medium, and high—to ensure you're always one step ahead of potential risks.
-
-- **🧩 Modular Design:**  
-  Want to create something new? Customize your **dashboard**, integrate new commands, and tweak animations. Build it your way!
+- **📊 Threat Analysis Dashboard**  
+  Monitor system diagnostics and receive actionable threat intelligence in real-time.
 
 ---
 
-## 🚀 **Quick Start: Get Up and Running in No Time!**
+## 🚀 **Quick Start**
 
-### 🛠️ **Prerequisites**  
+### 🛠️ **Prerequisites**
 - **Python 3.x**
 - **Node.js**
 - **Golang**
-- **TOR** (Optional, for heightened anonymity)
+- **TOR**
 
-To install all necessary dependencies, run the setup script:
+### 📥 **Setup**
+Install all dependencies effortlessly:
 
 ```bash
 sudo bash setup.sh
 ```
 
-### 🎮 **Usage**  
-
-Launching **TorVirus** is as simple as running:
+### 🎮 **Launch TorVirus**
+Start the tool by executing:
 
 ```bash
 bash virus
 ```
 
-Once you fire it up, **TorVirus** greets you with a **vibrant dashboard**, giving you quick access to all system stats and available commands.
+Once launched, you’ll see an intuitive interface like this:
+
+```bash
+           🚨 WELCOME TO TORVIRUS 🚨
+| 🔐 Zombies: 256737 | Session: 0.00s | Tor ✅ |
+
+  _____      __   ___
+ |_   _|__ _ \ \ / (_)_ _ _  _ ___
+   | |/ _ \ '_\ V /| | '_| || (_-<
+   |_\___/_|  \_/ |_|_|  \_,_/__/
+
+    🚨  LAYER7 ATTACK METHODS MENU  🚨
+         (Top-secret Protocols)
+
+      !TOR - Launch TOR-based DDoS
+    Usage: TOR https://example.com 60
+
+root@torvirus#~
+```
 
 ---
 
 ## 📝 **Command Cheat Sheet**
 
-| **Command** | **Description**                                          | **Example**                           |
-|-------------|----------------------------------------------------------|---------------------------------------|
-| `TOR`       | Launch a TOR-based DDoS attack on a specified target    | `TOR https://example.com 60`          |
-| `FLOOD`     | Execute a **flooding attack** on the target             | `FLOOD https://example.com 60`        |
-| `HTTPX`     | Start an **HTTPX attack** with proxy support            | `HTTPX https://example.com 60`        |
-| `HTTPS`     | Initiate an **HTTPS-based attack**                      | `HTTPS https://example.com 60`        |
-| `RESET`     | Launch an advanced **RESET attack**                     | `RESET https://example.com 60`        |
-| `STATS`     | Display **system and network statistics**               | `STATS`                               |
-| `CLEAR`     | **Clear the console**                                   | `CLEAR`                               |
-| `PROXY`     | Launch the **proxy scraping tool**                      | `PROXY`                               |
-| `SETUP`     | Run the setup script for **dependencies**               | `SETUP`                               |
-| `HELP`      | Open the **help interface**                             | `HELP`                                |
+| **Command** | **Description**                                | **Example**                     |
+|-------------|------------------------------------------------|---------------------------------|
+| `TOR`       | Execute a TOR-based DDoS attack                | `TOR https://example.com 60`    |
+| `FLOOD`     | Launch a flooding attack                       | `FLOOD https://example.com 60`  |
+| `HTTPX`     | Start an HTTPX-based attack                    | `HTTPX https://example.com 60`  |
+| `HTTPS`     | Initiate an HTTPS attack                       | `HTTPS https://example.com 60`  |
+| `RESET`     | Perform a RESET attack                         | `RESET https://example.com 60`  |
+| `STATS`     | View system and network statistics             | `STATS`                         |
+| `PROXY`     | Load and manage proxies                        | `PROXY`                         |
+| `HELP`      | Display help and usage information             | `HELP`                          |
+| `EXIT`      | Exit TorVirus                                  | `EXIT`                          |
 
 ---
 
-## 🎯 **Sample Attack Command**  
-To initiate a **60-second TOR-based DDoS attack** against a target, run:
+## 📊 **Operational Insights**
 
-```bash
-TOR https://example.com 60
-```
+### 👑 Cloudflare-Business Statistics
+
+**🌍 Total Traffic:** 10,941,692 requests
+- **✅ Successful Requests:** 4,851 (0.04%)
+- **❌ Blocked Requests:** 10,936,841 (99.96%)
+
+**🔓 Allowed Requests:**
+- Protocol: HTTP/2  
+  - **Response Status:** 404  
+  - **Count:** 4,851 (0.04%)
+
+**🛡 Blocked Requests:**
+- **Vector: HTTP DDoS Challenges**
+  - **Count:** 584,929  
+  - **Action:** Interactive Challenge  
+  - **Response Status:** 403
+- **Vector: Likely Bots**
+  - **Count:** 776,163  
+  - **Action:** Blocked  
+  - **Response Status:** 403
+- **Vector: Known Bad Sources**
+  - **Count:** 227,165  
+  - **Action:** Challenge  
+  - **Response Status:** 403
+- **Vector: Suspicious Headers/Paths**
+  - **Count:** 8,740,152  
+  - **Action:** Challenge  
+  - **Response Status:** 403
+- **Vector: Definite Bots**
+  - **Count:** 560,081  
+  - **Action:** Blocked  
+  - **Response Status:** 403
+
+### 👑 Cloudflare-Pro Statistics
+
+**🌍 Total Traffic:** 386,686 requests
+- **✅ Successful Requests:** 340,268 (88.00%)
+- **❌ Blocked Requests:** 46,418 (12.00%)
+
+**🔓 Allowed Requests:**
+- Protocol: HTTP/2
+  - **Response Status:** 404
+  - **Count:** 301,862
+- Protocol: HTTP/2
+  - **Response Status:** 429
+  - **Count:** 38,406
+
+**🛡 Blocked Requests:**
+- **Vector: Botnet Signatures (#93)**
+  - **Count:** 43,499  
+  - **Action:** Blocked  
+  - **Response Status:** 403
+- **Vector: Security Level Managed Challenge**
+  - **Count:** 2,919  
+  - **Action:** Challenge  
+  - **Response Status:** 403
 
 ---
 
-## 🌌 **Advanced Features to Explore**
+## 🌌 **Advanced Features**
 
-- **🎥 Matrix-Style Animations:**  
-  Dive into a world of **dynamic animations** as TorVirus visually processes your commands in the background. 
-
-- **💨 Loading Effects:**  
-  Experience **fluid loading effects** that bring a bit of flair to every command execution, making every action feel unique.
-
-- **⌨️ Typing Animation:**  
-  Enjoy **realistic typing effects** that add life to your terminal output—everything feels more interactive and alive.
-
-- **📐 Intuitive Command Structure:**  
-  Dive deep into network management with a **user-friendly, powerful command structure** designed to get you to results quickly.
+- **Customizable Setup:** Tailor commands and visuals to suit your workflow.
+- **Dynamic Feedback:** Get actionable data on operations and network dynamics.
+- **Seamless TOR Integration:** Strengthen anonymity during operations.
 
 ---
 
-## 🔐 **Security and Responsibility Disclaimer**
+## 🔐 **Security and Disclaimer**
 
-> **TorVirus is designed exclusively for educational and research purposes.**  
-> **Unauthorized use** on live websites or networks without explicit permission is **illegal**. The creators and contributors assume no responsibility for misuse or damages caused by this tool.  
+> **TorVirus is strictly for ethical and educational purposes.**  
+> Unauthorized usage is illegal. The creators assume no responsibility for misuse.
 
-**Always** use responsibly and follow **ethical hacking guidelines**. **You have been warned!**
+**Always follow ethical hacking guidelines.** 🚨
 
 ---
 
-## 🌐 **Connect with FrostFoe**  
+## 🌐 **Connect with FrostFoe**
 
 - **GitHub:** [@FrostFoe](https://github.com/FrostFoe)  
-- **Telegram:** [FrostFoe](https://t.me/FrostFoe)  
+- **Telegram:** [FrostFoe](https://t.me/FrostFoe)
 
-Your contributions and feedback are **invaluable**! Let’s collaborate and take **TorVirus** to the next level!
-
----
-
-**TorVirus v1.1 - Elevating Stealth Network Management to New Heights!** 🚀
+We value your feedback and contributions. Join us in shaping the future of cybersecurity!
 
 ---
+
+**TorVirus v1.1 - Your Command-Line Ally in Cyber Operations!** 🚀

