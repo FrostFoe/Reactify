@@ -1,8 +1,8 @@
-# 🔥 **TorVirus v1.1: The Stealth Network Tool by FrostFoe**
+# 🔥 **TorVirus v1.1: The Most Powerful DDoS Framework**
 
-### **TorVirus - The Ultimate Network Weapon**
+### **By @FrostFoe (t.me/Op_TakeDown)**
 
-Welcome to **TorVirus**, the all-in-one command-line tool for **advanced network operations** and **cyber exploration**. Designed with precision and style, **TorVirus** offers powerful attack methods, real-time monitoring, and a futuristic interface tailored for cybersecurity professionals. 
+Welcome to **TorVirus**, A **professional-grade DDoS framework**, providing **precise execution**, **secure operations**, and **unmatched control** in **high-stakes cyber operations**.
 
 > **Unleash the power. Operate responsibly.** 🔥
 
@@ -10,23 +10,12 @@ Welcome to **TorVirus**, the all-in-one command-line tool for **advanced network
 
 ## 🌟 **Key Features**
 
-- **🛰️ Real-Time Network Insights**  
-  Stay updated with live stats on bot activity, request rates, and network health.
-
-- **⚔️ Layer 7 DDoS Techniques**  
-  Deploy advanced attack methods such as **TOR**, **FLOOD**, **HTTPX**, **HTTPS**, and **RESET** for maximum precision.
-
-- **🌐 Seamless Proxy Management**  
-  Easily manage and load proxy lists to enhance operations.
-
-- **🔒 TOR Encryption**  
-  Ensure complete anonymity using **TOR tunnels** with industry-leading encryption.
-
-- **🚀 Immersive Visual Interface**  
-  Enjoy a matrix-inspired design with fluid animations and a user-friendly experience.
-
-- **📊 Threat Analysis Dashboard**  
-  Monitor system diagnostics and receive actionable threat intelligence in real-time.
+- **🛰️ Real-Time Network Insights**
+- **⚔️ Layer 7 DDoS Techniques**
+- **🌐 Seamless Proxy Management**
+- **🔒 TOR Encryption**
+- **🚀 Immersive Visual Interface**
+- **📊 Threat Analysis Dashboard**
 
 ---
 
@@ -36,7 +25,7 @@ Welcome to **TorVirus**, the all-in-one command-line tool for **advanced network
 - **Python 3.x**
 - **Node.js**
 - **Golang**
-- **TOR**
+- **Tor**
 
 ### 📥 **Setup**
 Install all dependencies effortlessly:
@@ -76,17 +65,18 @@ root@torvirus#~
 
 ## 📝 **Command Cheat Sheet**
 
-| **Command** | **Description**                                | **Example**                     |
-|-------------|------------------------------------------------|---------------------------------|
-| `TOR`       | Execute a TOR-based DDoS attack                | `TOR https://example.com 60`    |
-| `FLOOD`     | Launch a flooding attack                       | `FLOOD https://example.com 60`  |
-| `HTTPX`     | Start an HTTPX-based attack                    | `HTTPX https://example.com 60`  |
-| `HTTPS`     | Initiate an HTTPS attack                       | `HTTPS https://example.com 60`  |
-| `RESET`     | Perform a RESET attack                         | `RESET https://example.com 60`  |
-| `STATS`     | View system and network statistics             | `STATS`                         |
-| `PROXY`     | Load and manage proxies                        | `PROXY`                         |
-| `HELP`      | Display help and usage information             | `HELP`                          |
-| `EXIT`      | Exit TorVirus                                  | `EXIT`                          |
+| **Command**    | **Description**                              | **Example**                        |
+|----------------|----------------------------------------------|-------------------------------------|
+| `TOR`          | Execute a TOR-based attack                   | `TOR https://example.com 60`       |
+| `BYPASS`       | Launch a BYPASSing attack                    | `BYPASS https://example.com 60`    |
+| `CRASH`        | Start an CRASH-based attack                  | `CRASH https://example.com 60`     |
+| `VORTEX`       | Initiate an VORTEX attack                    | `VORTEX https://example.com 60`    |
+| `SEARCH`       | SEARCH GOOGLE for targets                    | `SEARCH Israeli Bank`              |
+| `HOST`         | Check the HOST of targets                    | `HOST https://example.com`         |
+| `STATS`        | View system and network statistics           | `STATS`                            |
+| `PROXY`        | Load and manage proxies                      | `PROXY`                            |
+| `HELP`         | Display help and usage information           | `HELP`                             |
+| `EXIT`         | Exit TorVirus                                | `EXIT`                             |
 
 ---
 
@@ -94,37 +84,69 @@ root@torvirus#~
 
 ```bash
 
-### 👑 Cloudflare-Pro Statistics
+👑 CLOUDFLARE-PRO 👑
 
-**🌍 Total Traffic:** 386,686 requests
-- **✅ Successful Requests:** 340,268 (88.00%)
-- **❌ Blocked Requests:** 46,418 (12.00%)
+🦄 TOTAL COUNT:
 
-**🔓 Allowed Requests:**
-- Protocol: HTTP/2
-  - **Response Status:** 404
-  - **Count:** 301,862
-- Protocol: HTTP/2
-  - **Response Status:** 429
-  - **Count:** 38,406
+ ALL REQUESTS
+ ➥ 1,546,744
 
-**🛡 Blocked Requests:**
-- **Vector: Botnet Signatures (#93)**
-  - **Count:** 43,499  
-  - **Action:** Blocked  
-  - **Response Status:** 403
-- **Vector: Security Level Managed Challenge**
-  - **Count:** 2,919  
-  - **Action:** Challenge  
-  - **Response Status:** 403
+ REQUEST SUCCESSFUL
+ ➥ 1,361,072  (88.00%)
+
+ REQUEST BLOCKED
+ ➥ 185,672  (12.00%)
+➖➖➖➖➖➖➖➖➖➖
+
+🔫 ALLOWED REQUESTS:
+➖➖➖➖➖➖➖➖➖➖
+ ➥ HTTP PROTOCOL: HTTP/2
+ ➥ HTTP RESPONSE STATUS: 404
+ ➥ COUNT: 1,207,448
+➖➖➖➖➖➖➖➖➖➖
+ ➥ HTTP PROTOCOL: HTTP/2
+ ➥ HTTP RESPONSE STATUS: 429
+ ➥ COUNT: 153,624
+➖➖➖➖➖➖➖➖➖➖
+ ➥ COUNT: 1,361,072
+ ➥ PERCENTAGE: 88.00%
+➖➖➖➖➖➖➖➖➖➖
+
+🚁 BYPASSED REQUESTS:
+➖➖➖➖➖➖➖➖➖➖
+ ➥ COUNT: 0
+ ➥ PERCENTAGE: 0.00%
+➖➖➖➖➖➖➖➖➖➖
+
+🛡 BLOCKED REQUESTS:
+➖➖➖➖➖➖➖➖➖➖
+ ➥ COUNT: 173,996
+ ➥ ACTION: BLOCKED
+ ➥ REQUEST HTTP METHOD: GET
+ ➥ REQUEST HTTP PROTOCOL: HTTP/2
+ ➥ RESPONSE STATUS: 403
+ ➥ TRIGGER RULES: HTTP DDoS
+ ➥ VECTOR: HTTP REQUESTS FROM UNKNOWN BOTNET.
+➖➖➖➖➖➖➖➖➖➖
+ ➥ COUNT: 11,676
+ ➥ ACTION: MANAGED CHALLENGE
+ ➥ REQUEST HTTP METHOD: GET
+ ➥ REQUEST HTTP PROTOCOL: HTTP/2
+ ➥ RESPONSE STATUS: 403
+ ➥ TRIGGER RULES: SECURITY LEVEL
+➖➖➖➖➖➖➖➖➖➖
+
+ ➥ COUNT: 185,672
+ ➥ PERCENTAGE: 12.00%
+➖➖➖➖➖➖➖➖➖➖
 
 ```
 
 ## 🌌 **Advanced Features**
 
-- **Customizable Setup:** Tailor commands and visuals to suit your workflow.
-- **Dynamic Feedback:** Get actionable data on operations and network dynamics.
-- **Seamless TOR Integration:** Strengthen anonymity during operations.
+- **Customizable Setup**
+- **Dynamic Feedback**
+- **Seamless TOR Integration**
 
 ---
 
