@@ -92,38 +92,7 @@ root@torvirus#~
 
 ## 📊 **Operational Insights**
 
-### 👑 Cloudflare-Business Statistics
-
-**🌍 Total Traffic:** 10,941,692 requests
-- **✅ Successful Requests:** 4,851 (0.04%)
-- **❌ Blocked Requests:** 10,936,841 (99.96%)
-
-**🔓 Allowed Requests:**
-- Protocol: HTTP/2  
-  - **Response Status:** 404  
-  - **Count:** 4,851 (0.04%)
-
-**🛡 Blocked Requests:**
-- **Vector: HTTP DDoS Challenges**
-  - **Count:** 584,929  
-  - **Action:** Interactive Challenge  
-  - **Response Status:** 403
-- **Vector: Likely Bots**
-  - **Count:** 776,163  
-  - **Action:** Blocked  
-  - **Response Status:** 403
-- **Vector: Known Bad Sources**
-  - **Count:** 227,165  
-  - **Action:** Challenge  
-  - **Response Status:** 403
-- **Vector: Suspicious Headers/Paths**
-  - **Count:** 8,740,152  
-  - **Action:** Challenge  
-  - **Response Status:** 403
-- **Vector: Definite Bots**
-  - **Count:** 560,081  
-  - **Action:** Blocked  
-  - **Response Status:** 403
+```bash
 
 ### 👑 Cloudflare-Pro Statistics
 
@@ -149,7 +118,7 @@ root@torvirus#~
   - **Action:** Challenge  
   - **Response Status:** 403
 
----
+```
 
 ## 🌌 **Advanced Features**
 
