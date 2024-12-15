@@ -292,9 +292,7 @@ def mn_lp():
                         for k, v in details.items():
                             print(f"{k}: {v}")
                     else:
-                        print(
-                            f"❌ Failed to fetch hosting information. HTTP Status: {
-                                response.status_code}"
+                        print(f"❌ Failed to fetch hosting information. HTTP Status: {response.status_code}"
                         )
                 except IndexError:
                     print("❌ Invalid Command. Usage: HOST <DOMAIN>")
