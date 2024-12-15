@@ -65,19 +65,22 @@ root@torvirus#~
 
 ## 📝 **Command Cheat Sheet**
 
-| **Command**    | **Description**                              | **Example**                        |
-|----------------|----------------------------------------------|-------------------------------------|
-| `TOR`          | Execute a TOR-based attack                   | `TOR https://example.com 60`       |
-| `BYPASS`       | Launch a BYPASSing attack                    | `BYPASS https://example.com 60`    |
-| `CRASH`        | Start a CRASH-based attack                   | `CRASH https://example.com 60`     |
-| `VORTEX`       | Initiate a VORTEX attack                     | `VORTEX https://example.com 60`    |
-| `RESET `       | Start a RESET attack                         | `RESET https://example.com 60`     |
-| `SEARCH`       | SEARCH GOOGLE for targets                    | `SEARCH Israeli Bank`              |
-| `HOST`         | Check the HOST of targets                    | `HOST https://example.com`         |
-| `STATS`        | View system and network statistics           | `STATS`                            |
-| `PROXY`        | Load and manage proxies                      | `PROXY`                            |
-| `HELP`         | Display help and usage information           | `HELP`                             |
-| `EXIT`         | Exit TorVirus                                | `EXIT`                             |
+|----------------|------------------------------------------------------------------|------------------------------------|
+| **Command**    | **Description**                                                  | **Example**                        |
+|----------------|------------------------------------------------------------------|------------------------------------|
+| `TOR`          | Unleash a stealthy TOR-powered attack. Privacy? Who?             | `TOR https://example.com 60`       |
+| `BYPASS`       | Break through firewalls and bypass protection like a pro.        | `BYPASS https://example.com 60`    |
+| `CRASH`        | Send those servers into overdrive and make them crumble.         | `CRASH https://example.com 60`     |
+| `VORTEX`       | Create a powerful storm of chaos and overwhelm your target.      | `VORTEX https://example.com 60`    |
+| `RESET`        | Hit the reset button on your target, crashing it out of service. | `RESET https://example.com 60`     |
+| `MEDUSA`       | Unleash the wrath of Medusa, paralyzing your target with power.  | `MM https://example.com 60`        |
+| `SEARCH`       | Find your next target with a quick Google search.                | `SEARCH Israeli Bank`              |
+| `HOST`         | Find out where your target is hiding.                            | `HOST https://example.com`         |
+| `STATS`        | Check the pulse of the system and track your progress.           | `STATS`                            |
+| `PROXY`        | Manage your proxies and keep things running smooth.              | `PROXY`                            |
+| `HELP`         | Get all the info you need to become a true master.               | `HELP`                             |
+| `EXIT`         | Time to go. Exit TorVirus like a boss.                           | `EXIT`                             |
+|----------------|------------------------------------------------------------------|------------------------------------|
 
 ---
 
