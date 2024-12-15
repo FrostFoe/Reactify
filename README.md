@@ -65,7 +65,6 @@ root@torvirus#~
 
 ## 📝 **Command Cheat Sheet**
 
-|----------------|------------------------------------------------------------------|------------------------------------|
 | **Command**    | **Description**                                                  | **Example**                        |
 |----------------|------------------------------------------------------------------|------------------------------------|
 | `TOR`          | Unleash a stealthy TOR-powered attack. Privacy? Who?             | `TOR https://example.com 60`       |
@@ -80,7 +79,6 @@ root@torvirus#~
 | `PROXY`        | Manage your proxies and keep things running smooth.              | `PROXY`                            |
 | `HELP`         | Get all the info you need to become a true master.               | `HELP`                             |
 | `EXIT`         | Time to go. Exit TorVirus like a boss.                           | `EXIT`                             |
-|----------------|------------------------------------------------------------------|------------------------------------|
 
 ---
 
