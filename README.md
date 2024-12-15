@@ -45,7 +45,7 @@ Once launched, you’ll see an intuitive interface like this:
 
 ```bash
            🚨 WELCOME TO TORVIRUS 🚨
-| 🔐 Zombies: 256737 | Session: 0.00s | Tor ✅ |
+| 🔐 Zombies: 256757 | Session: 0.00s | Tor ✅ |
 
   _____      __   ___
  |_   _|__ _ \ \ / (_)_ _ _  _ ___
