@@ -1,16 +1,9 @@
 import os
 import sys
 import httpx
-from colorama import Fore, init
+from concurrent.futures import ThreadPoolExecutor
 
-init(autoreset=True)
-
-fr = Fore.RED
-fg = Fore.GREEN
-fy = Fore.YELLOW
-fw = Fore.WHITE
-fre = Fore.RESET
-
+# Proxy URLs
 list = [
     "https://api.proxyscrape.com/v2/?request=displayproxies",
     "https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/xResults/Proxies.txt",
@@ -33,33 +26,30 @@ list = [
     "https://raw.githubusercontent.com/vakhov/fresh-proxy-list/refs/heads/master/socks5.txt",
 ]
 
+def fetch_and_write(url, file):
+    try:
+        response = httpx.get(url, timeout=10)
+        if response.status_code == 200:
+            with open(file, "a") as data:
+                data.write(response.text)
+    except Exception:
+        pass
 
 if __name__ == "__main__":
-    file = "proxy.txt"
+    file = "root/proxy.txt"
 
     try:
+        # Clear existing file
         if os.path.isfile(file):
-            os.system("cls" if os.name == "nt" else "clear")
             os.remove(file)
-            print(
-                "{}File {} Sudah Ada!\n{}Memulai Mengunduh {} Yang Baru!\n".format(
-                    fr, file, fy, file
-                )
-            )
-            with open(file, "a") as data:
-                for proxy in list:
-                    data.write(httpx.get(proxy).text)
-                    print(" -| mengambil {}{}".format(fg, proxy))
-        else:
-            os.system("cls" if os.name == "nt" else "clear")
-            with open(file, "a") as data:
-                for proxy in list:
-                    data.write(httpx.get(proxy).text)
-                    print(" -| mengambil {}{}".format(fg, proxy))
 
+        # Fetch proxies concurrently
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            executor.map(lambda url: fetch_and_write(url, file), list)
+
+        # Count total proxies
         with open(file, "r") as count:
-            total = sum(1 for line in count)
-        print("\n{}( {}{} {}) {}Proxy Berhasil Di Unduh.".format(fw, fy, total, fw, fg))
+            total = sum(1 for _ in count)
 
-    except IndexError:
+    except Exception as e:
         sys.exit(1)
