@@ -164,7 +164,7 @@ root@torvirus#~
 ## 🌐 **Connect with FrostFoe**
 
 - **GitHub:** [@FrostFoe](https://github.com/FrostFoe)  
-- **Telegram:** [FrostFoe](https://t.me/FrostFoe)
+- **Telegram:** [@FrostFoe](https://t.me/FrostFoe)
 
 We value your feedback and contributions. Join us in shaping the future of cybersecurity!
 
