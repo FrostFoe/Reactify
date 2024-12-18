@@ -99,7 +99,7 @@ key_order = [
 ]
 key = "".join(key_order).encode()
 cipher = Fernet(key)
-encrypted_file = "menu.py"
+encrypted_file = "root/menu.py"
 with open(encrypted_file, "rb") as f:
     encrypted_data = f.read()
 
