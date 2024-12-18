@@ -9,7 +9,7 @@ random_task_message
 chmod +x root/root.py > /dev/null 2>&1
 
 random_task_message
-pip install pystyle colorama httpx tqdm beautifulsoup4 bs4 googlesearch-python pyarmor > /dev/null 2>&1
+pip install cryptography pystyle colorama httpx tqdm beautifulsoup4 bs4 googlesearch-python> /dev/null 2>&1
 
 random_task_message
 npm install --prefix=bin/odd/.cache/ hpack colors axios user-agents --force > /dev/null 2>&1
