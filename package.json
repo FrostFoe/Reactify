@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "header-generator": "^2.1.61"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^4.1.1"
+  }
+}
