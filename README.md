@@ -9,4 +9,4 @@ According to official reports, the Federal Bureau of Investigation (FBI) has int
 More information can be found on their official website:  
 [https://www.fbi.gov/contact-us/field-offices/anchorage/fbi-intensify-efforts-to-combat-illegal-ddos-attacks](https://www.fbi.gov/contact-us/field-offices/anchorage/fbi-intensify-efforts-to-combat-illegal-ddos-attacks)
 
-Additionally, the individual operating under the alias "@FrostFoe" has been arrested in connection with these activities.
+Additionally, the individual operating under the alias "[@FrostFoe](https://t.me/FrostFoe)" has been arrested in connection with these activities.
